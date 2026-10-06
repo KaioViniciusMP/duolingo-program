@@ -247,6 +247,22 @@
             "print('Olá, mundo!')"
           ],
           "explicacao": "Use print() com o texto entre aspas: print('Olá, mundo!')."
+        },
+        {
+          "id": "u1-l1-e13",
+          "tipo": "lacuna",
+          "enunciado": "Complete para mostrar o texto na tela",
+          "codigo": "___('Olá, mundo!')",
+          "opcoes": [
+            "print",
+            "input",
+            "mostrar",
+            "Print"
+          ],
+          "respostasAceitas": [
+            "print"
+          ],
+          "explicacao": "Quem mostra na tela é o print, escrito todo em minúsculas."
         }
       ]
     },
@@ -475,6 +491,38 @@
             "nome = 'Ana'"
           ],
           "explicacao": "O texto vai entre aspas: nome = 'Ana'."
+        },
+        {
+          "id": "u1-l2-e14",
+          "tipo": "lacuna",
+          "enunciado": "Complete para guardar o nome na variável",
+          "codigo": "nome ___ 'Ana'",
+          "opcoes": [
+            "=",
+            "==",
+            ":",
+            "->"
+          ],
+          "respostasAceitas": [
+            "="
+          ],
+          "explicacao": "Um = sozinho guarda o valor da direita no nome da esquerda."
+        },
+        {
+          "id": "u1-l2-e15",
+          "tipo": "lacuna",
+          "enunciado": "Complete para mostrar a idade guardada",
+          "codigo": "idade = 15\nprint(___)",
+          "opcoes": [
+            "idade",
+            "'idade'",
+            "Idade",
+            "idade()"
+          ],
+          "respostasAceitas": [
+            "idade"
+          ],
+          "explicacao": "Sem aspas, o Python usa o valor da variável. Com aspas, seria só o texto \"idade\"."
         }
       ]
     },
@@ -708,6 +756,22 @@
             "print(type('oi'))"
           ],
           "explicacao": "Coloque o type('oi') dentro do print(): print(type('oi'))."
+        },
+        {
+          "id": "u1-l3-e14",
+          "tipo": "lacuna",
+          "enunciado": "Complete com um valor do tipo float",
+          "codigo": "print(type(___))   # float",
+          "opcoes": [
+            "3.5",
+            "3",
+            "'3.5'",
+            "True"
+          ],
+          "respostasAceitas": [
+            "3.5"
+          ],
+          "explicacao": "float é número com ponto. Entre aspas, vira texto (str)."
         }
       ]
     },
@@ -920,6 +984,38 @@
             "print(int('25'))"
           ],
           "explicacao": "Primeiro int('25') vira 25, depois o print mostra: print(int('25'))."
+        },
+        {
+          "id": "u1-l4-e13",
+          "tipo": "lacuna",
+          "enunciado": "Complete para transformar a resposta em número inteiro",
+          "codigo": "idade = ___(input('Sua idade? '))\nprint(idade + 1)",
+          "opcoes": [
+            "int",
+            "str",
+            "print",
+            "type"
+          ],
+          "respostasAceitas": [
+            "int"
+          ],
+          "explicacao": "O input devolve texto. O int() transforma esse texto em número inteiro."
+        },
+        {
+          "id": "u1-l4-e14",
+          "tipo": "lacuna",
+          "enunciado": "Complete para aceitar um número com ponto",
+          "codigo": "altura = ___(input('Sua altura? '))   # ex.: 1.75",
+          "opcoes": [
+            "float",
+            "int",
+            "str",
+            "input"
+          ],
+          "respostasAceitas": [
+            "float"
+          ],
+          "explicacao": "Para números com ponto, como 1.75, use float()."
         }
       ]
     },
@@ -1141,6 +1237,38 @@
             "print(pow(2, 5))"
           ],
           "explicacao": "A potência usa **: print(2 ** 5) mostra 32."
+        },
+        {
+          "id": "u1-l5-e13",
+          "tipo": "lacuna",
+          "enunciado": "Complete para mostrar o resto da divisão",
+          "codigo": "print(7 ___ 2)   # mostra 1",
+          "opcoes": [
+            "%",
+            "//",
+            "/",
+            "**"
+          ],
+          "respostasAceitas": [
+            "%"
+          ],
+          "explicacao": "O % dá o resto da divisão: 7 dividido por 2 dá 3 e sobra 1."
+        },
+        {
+          "id": "u1-l5-e14",
+          "tipo": "lacuna",
+          "enunciado": "Complete para calcular 2 elevado a 3",
+          "codigo": "print(2 ___ 3)   # mostra 8",
+          "opcoes": [
+            "**",
+            "*",
+            "^",
+            "+"
+          ],
+          "respostasAceitas": [
+            "**"
+          ],
+          "explicacao": "No Python, potência é **. O ^ não faz potência."
         }
       ]
     },
@@ -1372,6 +1500,37 @@
             "print(3 != 7)"
           ],
           "explicacao": "Diferente se escreve !=: print(7 != 3) mostra True."
+        },
+        {
+          "id": "u1-l6-e14",
+          "tipo": "lacuna",
+          "enunciado": "Complete para perguntar se a idade é maior ou igual a 18",
+          "codigo": "idade = 17\nprint(idade ___ 18)",
+          "opcoes": [
+            ">=",
+            "=>",
+            ">",
+            "="
+          ],
+          "respostasAceitas": [
+            ">="
+          ],
+          "explicacao": "Maior ou igual se escreve >=, com o sinal de maior primeiro."
+        },
+        {
+          "id": "u1-l6-e15",
+          "tipo": "lacuna",
+          "enunciado": "Complete para o resultado ser True",
+          "codigo": "print(5 > 3 ___ 2 > 4)",
+          "opcoes": [
+            "or",
+            "and",
+            "not"
+          ],
+          "respostasAceitas": [
+            "or"
+          ],
+          "explicacao": "Com or, basta uma das condições ser verdadeira. 5 > 3 é True, então tudo dá True."
         }
       ]
     },
@@ -1632,6 +1791,38 @@
             "total = 20"
           ],
           "explicacao": "Nome da variável, um =, e a conta: total = 10 * 2."
+        },
+        {
+          "id": "u1-rev-e15",
+          "tipo": "lacuna",
+          "enunciado": "Complete para x passar a valer 15",
+          "codigo": "x = 10\nx = x ___ 5\nprint(x)",
+          "opcoes": [
+            "+",
+            "-",
+            "*",
+            "="
+          ],
+          "respostasAceitas": [
+            "+"
+          ],
+          "explicacao": "x + 5 soma 5 ao valor atual de x, que era 10."
+        },
+        {
+          "id": "u1-rev-e16",
+          "tipo": "lacuna",
+          "enunciado": "Complete para ler o nome digitado",
+          "codigo": "nome = ___('Seu nome? ')\nprint(nome)",
+          "opcoes": [
+            "input",
+            "print",
+            "int",
+            "str"
+          ],
+          "respostasAceitas": [
+            "input"
+          ],
+          "explicacao": "O input() espera a pessoa digitar e devolve o que ela escreveu."
         }
       ]
     }

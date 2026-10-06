@@ -51,6 +51,17 @@ describe('conteúdo do curso', () => {
     }
   })
 
+  it('lacuna: um ___ no código e 3 a 4 blocos sem repetir, com a resposta entre eles', () => {
+    for (const e of exercicios.filter((e) => e.tipo === 'lacuna')) {
+      expect(e.codigo.split('___').length, e.id).toBe(2)
+      expect(e.opcoes.length, e.id).toBeGreaterThanOrEqual(3)
+      expect(e.opcoes.length, e.id).toBeLessThanOrEqual(4)
+      expect(new Set(e.opcoes).size, e.id).toBe(e.opcoes.length)
+      expect(e.respostasAceitas, e.id).toHaveLength(1)
+      expect(e.opcoes, e.id).toContain(e.respostasAceitas[0])
+    }
+  })
+
   it('digitar: tem pelo menos uma resposta aceita', () => {
     for (const e of exercicios.filter((e) => e.tipo === 'digitar')) {
       expect(e.respostasAceitas.length, e.id).toBeGreaterThan(0)
