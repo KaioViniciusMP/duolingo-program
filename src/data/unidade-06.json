@@ -1,0 +1,44 @@
+{
+  "id": "u6",
+  "titulo": "Iteração sobre listas",
+  "cor": "#2E8B57",
+  "guia": [],
+  "licoes": [
+    {
+      "id": "u6-l1",
+      "titulo": "for item in lista",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u6-l2",
+      "titulo": "Soma, contagem e maior valor",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u6-l3",
+      "titulo": "Filtrar para uma nova lista",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u6-l4",
+      "titulo": "enumerate",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u6-l5",
+      "titulo": "Introdução a list comprehension",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u6-rev",
+      "titulo": "Revisão",
+      "revisao": true,
+      "exercicios": []
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "u4",
+  "titulo": "Repetição com for",
+  "cor": "#1E9BB8",
+  "guia": [],
+  "licoes": [
+    {
+      "id": "u4-l1",
+      "titulo": "range(fim)",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u4-l2",
+      "titulo": "range(início, fim)",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u4-l3",
+      "titulo": "Passo e contagem regressiva",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u4-l4",
+      "titulo": "for × while",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u4-l5",
+      "titulo": "break e continue",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u4-rev",
+      "titulo": "Revisão",
+      "revisao": true,
+      "exercicios": []
+    }
+  ]
+}

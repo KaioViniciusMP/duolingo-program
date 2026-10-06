@@ -1,0 +1,38 @@
+{
+  "id": "u5",
+  "titulo": "Listas",
+  "cor": "#D9467A",
+  "guia": [],
+  "licoes": [
+    {
+      "id": "u5-l1",
+      "titulo": "Índices (inclusive negativos)",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u5-l2",
+      "titulo": "append, insert, remove, pop",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u5-l3",
+      "titulo": "len e in",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u5-l4",
+      "titulo": "Fatiamento",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u5-rev",
+      "titulo": "Revisão",
+      "revisao": true,
+      "exercicios": []
+    }
+  ]
+}

@@ -1,0 +1,1639 @@
+{
+  "id": "u1",
+  "titulo": "Primeiros passos",
+  "cor": "#3776AB",
+  "guia": [
+    {
+      "titulo": "Mostrar na tela com print",
+      "texto": "O print() mostra na tela o que está dentro dos parênteses. Texto vai entre aspas. Contas vão sem aspas.",
+      "codigo": "print('Olá, mundo!')\nprint(2 + 3)   # mostra 5"
+    },
+    {
+      "titulo": "Variáveis",
+      "texto": "Uma variável é um nome que guarda um valor. O nome fica à esquerda do = e o valor à direita. O nome não pode ter espaços nem começar com número.",
+      "codigo": "nome = 'Ana'\nidade = 15\nprint(nome)"
+    },
+    {
+      "titulo": "Tipos de dados",
+      "texto": "int é número inteiro, float é número com ponto, str é texto e bool é True ou False. O type() mostra o tipo de um valor.",
+      "codigo": "print(type(10))     # int\nprint(type(2.5))    # float\nprint(type('oi'))   # str\nprint(type(True))   # bool"
+    },
+    {
+      "titulo": "Ler o teclado com input",
+      "texto": "O input() espera a pessoa digitar e devolve sempre um texto. Para fazer contas, converta com int() ou float().",
+      "codigo": "idade = int(input('Sua idade? '))\nprint(idade + 1)"
+    },
+    {
+      "titulo": "Operadores aritméticos",
+      "texto": "+ soma, - subtrai, * multiplica, / divide (sempre com ponto), // divide sem a parte decimal, % dá o resto e ** é potência.",
+      "codigo": "print(7 / 2)    # 3.5\nprint(7 // 2)   # 3\nprint(7 % 2)    # 1\nprint(2 ** 3)   # 8"
+    },
+    {
+      "titulo": "Comparar e combinar",
+      "texto": "Comparações dão True ou False: == igual, != diferente, > maior, < menor, >= e <=. Use and (as duas verdadeiras), or (basta uma) e not (inverte).",
+      "codigo": "idade = 20\nprint(idade >= 18)               # True\nprint(idade > 18 and idade < 60) # True\nprint(not True)                  # False"
+    }
+  ],
+  "licoes": [
+    {
+      "id": "u1-l1",
+      "titulo": "Olá, print",
+      "revisao": false,
+      "exercicios": [
+        {
+          "id": "u1-l1-e01",
+          "tipo": "multipla_escolha",
+          "enunciado": "Qual comando mostra um texto na tela?",
+          "opcoes": [
+            "print('Olá')",
+            "mostrar('Olá')",
+            "echo 'Olá'",
+            "input('Olá')"
+          ],
+          "respostasAceitas": [
+            "print('Olá')"
+          ],
+          "explicacao": "O print() mostra na tela o que está dentro dos parênteses."
+        },
+        {
+          "id": "u1-l1-e02",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "print('Bom dia')",
+          "opcoes": [
+            "Bom dia",
+            "'Bom dia'",
+            "print Bom dia",
+            "Nada"
+          ],
+          "respostasAceitas": [
+            "Bom dia"
+          ],
+          "explicacao": "As aspas só marcam onde o texto começa e termina. Elas não aparecem na tela."
+        },
+        {
+          "id": "u1-l1-e03",
+          "tipo": "pares",
+          "enunciado": "Ligue cada código ao que ele mostra",
+          "opcoes": null,
+          "respostasAceitas": [
+            [
+              "print('Oi')",
+              "Oi"
+            ],
+            [
+              "print(2 + 3)",
+              "5"
+            ],
+            [
+              "print('2 + 3')",
+              "2 + 3"
+            ],
+            [
+              "print(10 - 4)",
+              "6"
+            ]
+          ],
+          "explicacao": "Entre aspas, o Python mostra o texto como está. Sem aspas, ele faz a conta."
+        },
+        {
+          "id": "u1-l1-e04",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "print(4 + 4)",
+          "opcoes": [
+            "8",
+            "4 + 4",
+            "44",
+            "Dá erro"
+          ],
+          "respostasAceitas": [
+            "8"
+          ],
+          "explicacao": "Sem aspas, o Python calcula a conta e mostra o resultado."
+        },
+        {
+          "id": "u1-l1-e05",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "print('4 + 4')",
+          "opcoes": [
+            "4 + 4",
+            "8",
+            "'4 + 4'",
+            "Dá erro"
+          ],
+          "respostasAceitas": [
+            "4 + 4"
+          ],
+          "explicacao": "Entre aspas é texto. O Python mostra exatamente o que está escrito, sem calcular."
+        },
+        {
+          "id": "u1-l1-e06",
+          "tipo": "multipla_escolha",
+          "enunciado": "Qual linha está escrita do jeito certo?",
+          "opcoes": [
+            "print('Python')",
+            "Print('Python')",
+            "print 'Python'",
+            "print('Python'"
+          ],
+          "respostasAceitas": [
+            "print('Python')"
+          ],
+          "explicacao": "O print é escrito em minúsculas, e o texto fica entre aspas dentro dos parênteses."
+        },
+        {
+          "id": "u1-l1-e07",
+          "tipo": "pares",
+          "enunciado": "Ligue cada parte ao que ela faz",
+          "opcoes": null,
+          "respostasAceitas": [
+            [
+              "print",
+              "mostra na tela"
+            ],
+            [
+              "( )",
+              "guardam o que vai ser mostrado"
+            ],
+            [
+              "' '",
+              "marcam um texto"
+            ],
+            [
+              "#",
+              "começa um comentário"
+            ]
+          ],
+          "explicacao": "O print mostra, os parênteses guardam o conteúdo e as aspas marcam o texto."
+        },
+        {
+          "id": "u1-l1-e08",
+          "tipo": "multipla_escolha",
+          "enunciado": "As aspas duplas também funcionam. O que esse código mostra?",
+          "codigo": "print(\"Olá, mundo!\")",
+          "opcoes": [
+            "Olá, mundo!",
+            "\"Olá, mundo!\"",
+            "Dá erro",
+            "Olá mundo"
+          ],
+          "respostasAceitas": [
+            "Olá, mundo!"
+          ],
+          "explicacao": "Em Python, aspas simples ' e duplas \" funcionam do mesmo jeito para texto."
+        },
+        {
+          "id": "u1-l1-e09",
+          "tipo": "multipla_escolha",
+          "enunciado": "Quantas linhas esse código mostra na tela?",
+          "codigo": "print('Oi')\nprint('Tudo bem?')",
+          "opcoes": [
+            "2",
+            "1",
+            "0",
+            "4"
+          ],
+          "respostasAceitas": [
+            "2"
+          ],
+          "explicacao": "Cada print mostra uma linha. Dois prints, duas linhas."
+        },
+        {
+          "id": "u1-l1-e10",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "# Isso é um comentário\nprint('Oi')",
+          "opcoes": [
+            "Oi",
+            "Isso é um comentário",
+            "# Isso é um comentário\nOi",
+            "Nada"
+          ],
+          "respostasAceitas": [
+            "Oi"
+          ],
+          "explicacao": "Linhas que começam com # são comentários. O Python ignora essas linhas."
+        },
+        {
+          "id": "u1-l1-e11",
+          "tipo": "blocos",
+          "enunciado": "Monte o código que mostra: Bom dia",
+          "opcoes": [
+            "print",
+            "(",
+            "'Bom dia'",
+            ")",
+            "input",
+            "Bom dia"
+          ],
+          "respostasAceitas": [
+            [
+              "print",
+              "(",
+              "'Bom dia'",
+              ")"
+            ]
+          ],
+          "explicacao": "O texto vai entre aspas, dentro dos parênteses do print."
+        },
+        {
+          "id": "u1-l1-e12",
+          "tipo": "digitar",
+          "enunciado": "Escreva o código que mostra: Olá, mundo!",
+          "opcoes": null,
+          "respostasAceitas": [
+            "print('Olá, mundo!')"
+          ],
+          "explicacao": "Use print() com o texto entre aspas: print('Olá, mundo!')."
+        }
+      ]
+    },
+    {
+      "id": "u1-l2",
+      "titulo": "Variáveis",
+      "revisao": false,
+      "exercicios": [
+        {
+          "id": "u1-l2-e01",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que é uma variável?",
+          "opcoes": [
+            "Um nome que guarda um valor",
+            "Um comando que mostra texto",
+            "Um tipo de erro",
+            "Uma conta matemática"
+          ],
+          "respostasAceitas": [
+            "Um nome que guarda um valor"
+          ],
+          "explicacao": "Uma variável é como uma caixinha com etiqueta: o nome é a etiqueta e o valor fica guardado dentro."
+        },
+        {
+          "id": "u1-l2-e02",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "idade = 15\nprint(idade)",
+          "opcoes": [
+            "15",
+            "idade",
+            "'idade'",
+            "Dá erro"
+          ],
+          "respostasAceitas": [
+            "15"
+          ],
+          "explicacao": "print(idade) mostra o valor guardado na variável, que é 15."
+        },
+        {
+          "id": "u1-l2-e03",
+          "tipo": "multipla_escolha",
+          "enunciado": "Repare nas aspas. O que esse código mostra?",
+          "codigo": "nome = 'Ana'\nprint('nome')",
+          "opcoes": [
+            "nome",
+            "Ana",
+            "'Ana'",
+            "Dá erro"
+          ],
+          "respostasAceitas": [
+            "nome"
+          ],
+          "explicacao": "Com aspas, 'nome' é só um texto. Para mostrar a variável, escreva print(nome), sem aspas."
+        },
+        {
+          "id": "u1-l2-e04",
+          "tipo": "pares",
+          "enunciado": "Ligue cada linha ao que ela faz",
+          "opcoes": null,
+          "respostasAceitas": [
+            [
+              "idade = 15",
+              "guarda o número 15"
+            ],
+            [
+              "nome = 'Bia'",
+              "guarda o texto Bia"
+            ],
+            [
+              "print(idade)",
+              "mostra o valor de idade"
+            ],
+            [
+              "total = 2 + 3",
+              "guarda o resultado 5"
+            ]
+          ],
+          "explicacao": "O = guarda o valor da direita na variável da esquerda."
+        },
+        {
+          "id": "u1-l2-e05",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "pontos = 10\npontos = 20\nprint(pontos)",
+          "opcoes": [
+            "20",
+            "10",
+            "10 20",
+            "30"
+          ],
+          "respostasAceitas": [
+            "20"
+          ],
+          "explicacao": "Quando você guarda um valor novo, o antigo é substituído. pontos termina valendo 20."
+        },
+        {
+          "id": "u1-l2-e06",
+          "tipo": "multipla_escolha",
+          "enunciado": "Qual nome de variável é válido?",
+          "opcoes": [
+            "minha_idade",
+            "minha idade",
+            "2idade",
+            "minha-idade"
+          ],
+          "respostasAceitas": [
+            "minha_idade"
+          ],
+          "explicacao": "O nome não pode ter espaço, hífen nem começar com número. Use _ para separar palavras."
+        },
+        {
+          "id": "u1-l2-e07",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "a = 5\nb = a\nprint(b)",
+          "opcoes": [
+            "5",
+            "a",
+            "b",
+            "Dá erro"
+          ],
+          "respostasAceitas": [
+            "5"
+          ],
+          "explicacao": "b = a copia o valor de a para b. Então b também vale 5."
+        },
+        {
+          "id": "u1-l2-e08",
+          "tipo": "multipla_escolha",
+          "enunciado": "Qual linha guarda 100 na variável total?",
+          "opcoes": [
+            "total = 100",
+            "100 = total",
+            "total == 100",
+            "print(total = 100)"
+          ],
+          "respostasAceitas": [
+            "total = 100"
+          ],
+          "explicacao": "O nome da variável fica à esquerda do = e o valor fica à direita."
+        },
+        {
+          "id": "u1-l2-e09",
+          "tipo": "multipla_escolha",
+          "enunciado": "O Python diferencia maiúsculas. O que acontece aqui?",
+          "codigo": "Nome = 'Ana'\nprint(nome)",
+          "opcoes": [
+            "Dá erro",
+            "Ana",
+            "Nome",
+            "nome"
+          ],
+          "respostasAceitas": [
+            "Dá erro"
+          ],
+          "explicacao": "Nome e nome são variáveis diferentes. A variável nome não existe, então dá erro."
+        },
+        {
+          "id": "u1-l2-e10",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "contador = 1\ncontador = contador + 1\nprint(contador)",
+          "opcoes": [
+            "2",
+            "1",
+            "contador + 1",
+            "11"
+          ],
+          "respostasAceitas": [
+            "2"
+          ],
+          "explicacao": "O Python calcula contador + 1 (que dá 2) e guarda o resultado de volta em contador."
+        },
+        {
+          "id": "u1-l2-e11",
+          "tipo": "pares",
+          "enunciado": "Ligue cada linha ao que ela faz com x",
+          "opcoes": null,
+          "respostasAceitas": [
+            [
+              "x = 3",
+              "x passa a valer 3"
+            ],
+            [
+              "x = x + 1",
+              "x aumenta 1"
+            ],
+            [
+              "x = 0",
+              "x volta a zero"
+            ],
+            [
+              "y = x",
+              "y recebe o valor de x"
+            ]
+          ],
+          "explicacao": "Sempre que aparece um =, a variável da esquerda recebe um valor novo."
+        },
+        {
+          "id": "u1-l2-e12",
+          "tipo": "blocos",
+          "enunciado": "Guarde o número 15 na variável idade",
+          "opcoes": [
+            "idade",
+            "=",
+            "15",
+            "==",
+            "'idade'"
+          ],
+          "respostasAceitas": [
+            [
+              "idade",
+              "=",
+              "15"
+            ]
+          ],
+          "explicacao": "Nome da variável, depois um =, depois o valor. O == serve para comparar, não para guardar."
+        },
+        {
+          "id": "u1-l2-e13",
+          "tipo": "digitar",
+          "enunciado": "Crie a variável nome guardando o texto Ana",
+          "opcoes": null,
+          "respostasAceitas": [
+            "nome = 'Ana'"
+          ],
+          "explicacao": "O texto vai entre aspas: nome = 'Ana'."
+        }
+      ]
+    },
+    {
+      "id": "u1-l3",
+      "titulo": "Tipos de dados",
+      "revisao": false,
+      "exercicios": [
+        {
+          "id": "u1-l3-e01",
+          "tipo": "pares",
+          "enunciado": "Ligue cada valor ao seu tipo",
+          "opcoes": null,
+          "respostasAceitas": [
+            [
+              "10",
+              "int (inteiro)"
+            ],
+            [
+              "3.5",
+              "float (decimal)"
+            ],
+            [
+              "'oi'",
+              "str (texto)"
+            ],
+            [
+              "True",
+              "bool (verdadeiro ou falso)"
+            ]
+          ],
+          "explicacao": "int é inteiro, float tem ponto decimal, str é texto entre aspas e bool é True ou False."
+        },
+        {
+          "id": "u1-l3-e02",
+          "tipo": "multipla_escolha",
+          "enunciado": "Qual é o tipo de 42?",
+          "opcoes": [
+            "int",
+            "float",
+            "str",
+            "bool"
+          ],
+          "respostasAceitas": [
+            "int"
+          ],
+          "explicacao": "42 é um número inteiro, sem ponto e sem aspas. O tipo é int."
+        },
+        {
+          "id": "u1-l3-e03",
+          "tipo": "multipla_escolha",
+          "enunciado": "E qual é o tipo de '42'?",
+          "opcoes": [
+            "str",
+            "int",
+            "float",
+            "bool"
+          ],
+          "respostasAceitas": [
+            "str"
+          ],
+          "explicacao": "Com aspas, é texto, mesmo que pareça número. O tipo é str."
+        },
+        {
+          "id": "u1-l3-e04",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "preco = 9.90\nprint(type(preco))",
+          "opcoes": [
+            "<class 'float'>",
+            "<class 'int'>",
+            "<class 'str'>",
+            "9.90"
+          ],
+          "respostasAceitas": [
+            "<class 'float'>"
+          ],
+          "explicacao": "type() mostra o tipo do valor. Número com ponto é float."
+        },
+        {
+          "id": "u1-l3-e05",
+          "tipo": "multipla_escolha",
+          "enunciado": "Como se escreve dois e meio em Python?",
+          "opcoes": [
+            "2.5",
+            "2,5",
+            "'2.5'",
+            "2 1/2"
+          ],
+          "respostasAceitas": [
+            "2.5"
+          ],
+          "explicacao": "Em Python, a parte decimal é separada por ponto, não por vírgula."
+        },
+        {
+          "id": "u1-l3-e06",
+          "tipo": "multipla_escolha",
+          "enunciado": "Quais são os dois valores do tipo bool?",
+          "opcoes": [
+            "True e False",
+            "true e false",
+            "Sim e Não",
+            "'True' e 'False'"
+          ],
+          "respostasAceitas": [
+            "True e False"
+          ],
+          "explicacao": "São True e False, com a primeira letra maiúscula e sem aspas."
+        },
+        {
+          "id": "u1-l3-e07",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "print('5' + '5')",
+          "opcoes": [
+            "55",
+            "10",
+            "5 + 5",
+            "Dá erro"
+          ],
+          "respostasAceitas": [
+            "55"
+          ],
+          "explicacao": "Com aspas são textos. O + junta um texto no outro: '5' + '5' vira '55'."
+        },
+        {
+          "id": "u1-l3-e08",
+          "tipo": "multipla_escolha",
+          "enunciado": "E sem aspas? O que esse código mostra?",
+          "codigo": "print(5 + 5)",
+          "opcoes": [
+            "10",
+            "55",
+            "5 + 5",
+            "Dá erro"
+          ],
+          "respostasAceitas": [
+            "10"
+          ],
+          "explicacao": "Sem aspas são números, então o + faz a soma."
+        },
+        {
+          "id": "u1-l3-e09",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que acontece aqui?",
+          "codigo": "print('5' + 5)",
+          "opcoes": [
+            "Dá erro",
+            "10",
+            "55",
+            "'55'"
+          ],
+          "respostasAceitas": [
+            "Dá erro"
+          ],
+          "explicacao": "O Python não sabe somar texto com número. É preciso converter um deles antes."
+        },
+        {
+          "id": "u1-l3-e10",
+          "tipo": "pares",
+          "enunciado": "Ligue cada código ao que ele mostra",
+          "opcoes": null,
+          "respostasAceitas": [
+            [
+              "type(7)",
+              "<class 'int'>"
+            ],
+            [
+              "type(7.0)",
+              "<class 'float'>"
+            ],
+            [
+              "type('7')",
+              "<class 'str'>"
+            ],
+            [
+              "type(False)",
+              "<class 'bool'>"
+            ]
+          ],
+          "explicacao": "7 é int, 7.0 é float, '7' é str e False é bool."
+        },
+        {
+          "id": "u1-l3-e11",
+          "tipo": "multipla_escolha",
+          "enunciado": "Qual destes valores é do tipo float?",
+          "opcoes": [
+            "0.5",
+            "5",
+            "'0.5'",
+            "False"
+          ],
+          "respostasAceitas": [
+            "0.5"
+          ],
+          "explicacao": "0.5 é um número com ponto decimal e sem aspas, então é float."
+        },
+        {
+          "id": "u1-l3-e12",
+          "tipo": "blocos",
+          "enunciado": "Monte o código que mostra o tipo de 3.5",
+          "opcoes": [
+            "print",
+            "(",
+            "type",
+            "(",
+            "3.5",
+            ")",
+            ")",
+            "int"
+          ],
+          "respostasAceitas": [
+            [
+              "print",
+              "(",
+              "type",
+              "(",
+              "3.5",
+              ")",
+              ")"
+            ]
+          ],
+          "explicacao": "O type(3.5) fica dentro do print(). Cada ( precisa do seu )."
+        },
+        {
+          "id": "u1-l3-e13",
+          "tipo": "digitar",
+          "enunciado": "Escreva o código que mostra o tipo de 'oi'",
+          "opcoes": null,
+          "respostasAceitas": [
+            "print(type('oi'))"
+          ],
+          "explicacao": "Coloque o type('oi') dentro do print(): print(type('oi'))."
+        }
+      ]
+    },
+    {
+      "id": "u1-l4",
+      "titulo": "input e conversão",
+      "revisao": false,
+      "exercicios": [
+        {
+          "id": "u1-l4-e01",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que o input() faz?",
+          "opcoes": [
+            "Lê o que a pessoa digita",
+            "Mostra um texto na tela",
+            "Converte texto em número",
+            "Apaga a tela"
+          ],
+          "respostasAceitas": [
+            "Lê o que a pessoa digita"
+          ],
+          "explicacao": "O input() espera a pessoa digitar algo e apertar Enter."
+        },
+        {
+          "id": "u1-l4-e02",
+          "tipo": "multipla_escolha",
+          "enunciado": "A pessoa digita Ana. O que fica guardado em nome?",
+          "codigo": "nome = input('Seu nome? ')",
+          "opcoes": [
+            "'Ana'",
+            "'Seu nome? '",
+            "Nada",
+            "input"
+          ],
+          "respostasAceitas": [
+            "'Ana'"
+          ],
+          "explicacao": "O texto dentro do input() é só a pergunta. O que fica guardado é o que a pessoa digitou."
+        },
+        {
+          "id": "u1-l4-e03",
+          "tipo": "multipla_escolha",
+          "enunciado": "Que tipo de valor o input() sempre devolve?",
+          "opcoes": [
+            "str (texto)",
+            "int",
+            "float",
+            "Depende do que foi digitado"
+          ],
+          "respostasAceitas": [
+            "str (texto)"
+          ],
+          "explicacao": "Mesmo que a pessoa digite um número, o input() devolve um texto."
+        },
+        {
+          "id": "u1-l4-e04",
+          "tipo": "pares",
+          "enunciado": "Ligue cada conversão ao resultado",
+          "opcoes": null,
+          "respostasAceitas": [
+            [
+              "int('8')",
+              "8"
+            ],
+            [
+              "float('2.5')",
+              "2.5"
+            ],
+            [
+              "str(10)",
+              "'10'"
+            ],
+            [
+              "int(3.9)",
+              "3"
+            ]
+          ],
+          "explicacao": "int() vira inteiro (e corta a parte decimal), float() vira decimal e str() vira texto."
+        },
+        {
+          "id": "u1-l4-e05",
+          "tipo": "multipla_escolha",
+          "enunciado": "Para que serve o int() nesta linha?",
+          "codigo": "idade = int(input('Idade? '))",
+          "opcoes": [
+            "Transformar o texto digitado em número",
+            "Mostrar a idade na tela",
+            "Perguntar a idade",
+            "Nada, ele é opcional"
+          ],
+          "respostasAceitas": [
+            "Transformar o texto digitado em número"
+          ],
+          "explicacao": "O input() devolve texto. O int() transforma esse texto em número para dar para fazer contas."
+        },
+        {
+          "id": "u1-l4-e06",
+          "tipo": "multipla_escolha",
+          "enunciado": "A pessoa digita 4. O que aparece na tela?",
+          "codigo": "x = input('Número? ')\nprint(x + x)",
+          "opcoes": [
+            "44",
+            "8",
+            "Dá erro",
+            "4 + 4"
+          ],
+          "respostasAceitas": [
+            "44"
+          ],
+          "explicacao": "x é o texto '4'. Juntar '4' com '4' dá '44'."
+        },
+        {
+          "id": "u1-l4-e07",
+          "tipo": "multipla_escolha",
+          "enunciado": "Agora com int(). A pessoa digita 4. O que aparece?",
+          "codigo": "x = int(input('Número? '))\nprint(x + x)",
+          "opcoes": [
+            "8",
+            "44",
+            "Dá erro",
+            "4 + 4"
+          ],
+          "respostasAceitas": [
+            "8"
+          ],
+          "explicacao": "Com int(), x vira o número 4. Então x + x é 8."
+        },
+        {
+          "id": "u1-l4-e08",
+          "tipo": "multipla_escolha",
+          "enunciado": "Qual linha lê um preço como 7.50 do jeito certo?",
+          "opcoes": [
+            "preco = float(input())",
+            "preco = int(input())",
+            "preco = str(input())",
+            "preco = input(float)"
+          ],
+          "respostasAceitas": [
+            "preco = float(input())"
+          ],
+          "explicacao": "Preço tem parte decimal, então use float(). O int() não aceita texto com ponto."
+        },
+        {
+          "id": "u1-l4-e09",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "print(int('3') + 2)",
+          "opcoes": [
+            "5",
+            "32",
+            "Dá erro",
+            "'5'"
+          ],
+          "respostasAceitas": [
+            "5"
+          ],
+          "explicacao": "int('3') vira o número 3. Então 3 + 2 dá 5."
+        },
+        {
+          "id": "u1-l4-e10",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que acontece aqui?",
+          "codigo": "print(int('abc'))",
+          "opcoes": [
+            "Dá erro",
+            "abc",
+            "0",
+            "'abc'"
+          ],
+          "respostasAceitas": [
+            "Dá erro"
+          ],
+          "explicacao": "O int() só consegue converter textos que têm um número, como '12'."
+        },
+        {
+          "id": "u1-l4-e11",
+          "tipo": "blocos",
+          "enunciado": "Leia a idade digitada como número inteiro",
+          "opcoes": [
+            "idade",
+            "=",
+            "int",
+            "(",
+            "input",
+            "(",
+            ")",
+            ")",
+            "float"
+          ],
+          "respostasAceitas": [
+            [
+              "idade",
+              "=",
+              "int",
+              "(",
+              "input",
+              "(",
+              ")",
+              ")"
+            ]
+          ],
+          "explicacao": "O input() fica dentro do int(), que transforma o texto digitado em número."
+        },
+        {
+          "id": "u1-l4-e12",
+          "tipo": "digitar",
+          "enunciado": "Converta o texto '25' para inteiro e mostre o resultado",
+          "opcoes": null,
+          "respostasAceitas": [
+            "print(int('25'))"
+          ],
+          "explicacao": "Primeiro int('25') vira 25, depois o print mostra: print(int('25'))."
+        }
+      ]
+    },
+    {
+      "id": "u1-l5",
+      "titulo": "Operadores aritméticos",
+      "revisao": false,
+      "exercicios": [
+        {
+          "id": "u1-l5-e01",
+          "tipo": "pares",
+          "enunciado": "Ligue cada operador ao que ele faz",
+          "opcoes": null,
+          "respostasAceitas": [
+            [
+              "+",
+              "soma"
+            ],
+            [
+              "-",
+              "subtração"
+            ],
+            [
+              "*",
+              "multiplicação"
+            ],
+            [
+              "/",
+              "divisão"
+            ]
+          ],
+          "explicacao": "Em Python, a multiplicação usa * e a divisão usa /."
+        },
+        {
+          "id": "u1-l5-e02",
+          "tipo": "pares",
+          "enunciado": "Agora os operadores especiais",
+          "opcoes": null,
+          "respostasAceitas": [
+            [
+              "//",
+              "divisão sem a parte decimal"
+            ],
+            [
+              "%",
+              "resto da divisão"
+            ],
+            [
+              "**",
+              "potência"
+            ],
+            [
+              "/",
+              "divisão com decimais"
+            ]
+          ],
+          "explicacao": "// descarta a parte decimal, % dá o resto e ** eleva à potência."
+        },
+        {
+          "id": "u1-l5-e03",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "print(7 / 2)",
+          "opcoes": [
+            "3.5",
+            "3",
+            "3.0",
+            "1"
+          ],
+          "respostasAceitas": [
+            "3.5"
+          ],
+          "explicacao": "A divisão com / dá o resultado completo, com casas decimais."
+        },
+        {
+          "id": "u1-l5-e04",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "print(7 // 2)",
+          "opcoes": [
+            "3",
+            "3.5",
+            "4",
+            "1"
+          ],
+          "respostasAceitas": [
+            "3"
+          ],
+          "explicacao": "// divide e joga fora a parte decimal: 3.5 vira 3."
+        },
+        {
+          "id": "u1-l5-e05",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "print(7 % 2)",
+          "opcoes": [
+            "1",
+            "3",
+            "3.5",
+            "0"
+          ],
+          "respostasAceitas": [
+            "1"
+          ],
+          "explicacao": "7 dividido por 2 dá 3 e sobra 1. O % mostra o que sobra."
+        },
+        {
+          "id": "u1-l5-e06",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "print(2 ** 3)",
+          "opcoes": [
+            "8",
+            "6",
+            "5",
+            "9"
+          ],
+          "respostasAceitas": [
+            "8"
+          ],
+          "explicacao": "2 ** 3 é 2 × 2 × 2, que dá 8."
+        },
+        {
+          "id": "u1-l5-e07",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "print(2 + 3 * 4)",
+          "opcoes": [
+            "14",
+            "20",
+            "24",
+            "9"
+          ],
+          "respostasAceitas": [
+            "14"
+          ],
+          "explicacao": "Como na matemática, a multiplicação vem antes: 3 * 4 = 12, depois 2 + 12 = 14."
+        },
+        {
+          "id": "u1-l5-e08",
+          "tipo": "multipla_escolha",
+          "enunciado": "E com parênteses?",
+          "codigo": "print((2 + 3) * 4)",
+          "opcoes": [
+            "20",
+            "14",
+            "24",
+            "9"
+          ],
+          "respostasAceitas": [
+            "20"
+          ],
+          "explicacao": "O que está entre parênteses é calculado primeiro: 2 + 3 = 5, depois 5 * 4 = 20."
+        },
+        {
+          "id": "u1-l5-e09",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "print(10 / 2)",
+          "opcoes": [
+            "5.0",
+            "5",
+            "2",
+            "20"
+          ],
+          "respostasAceitas": [
+            "5.0"
+          ],
+          "explicacao": "A divisão com / sempre dá um float, mesmo quando a conta é exata."
+        },
+        {
+          "id": "u1-l5-e10",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "preco = 10\nquantidade = 3\ntotal = preco * quantidade\nprint(total)",
+          "opcoes": [
+            "30",
+            "13",
+            "103",
+            "total"
+          ],
+          "respostasAceitas": [
+            "30"
+          ],
+          "explicacao": "total guarda 10 * 3, que é 30."
+        },
+        {
+          "id": "u1-l5-e11",
+          "tipo": "blocos",
+          "enunciado": "Monte o código que mostra o resto de 10 dividido por 3",
+          "opcoes": [
+            "print",
+            "(",
+            "10",
+            "%",
+            "3",
+            ")",
+            "//"
+          ],
+          "respostasAceitas": [
+            [
+              "print",
+              "(",
+              "10",
+              "%",
+              "3",
+              ")"
+            ]
+          ],
+          "explicacao": "O % dá o resto da divisão. O // daria o resultado sem a parte decimal."
+        },
+        {
+          "id": "u1-l5-e12",
+          "tipo": "digitar",
+          "enunciado": "Escreva o código que mostra 2 elevado a 5",
+          "opcoes": null,
+          "respostasAceitas": [
+            "print(2 ** 5)",
+            "print(pow(2, 5))"
+          ],
+          "explicacao": "A potência usa **: print(2 ** 5) mostra 32."
+        }
+      ]
+    },
+    {
+      "id": "u1-l6",
+      "titulo": "Operadores relacionais e lógicos",
+      "revisao": false,
+      "exercicios": [
+        {
+          "id": "u1-l6-e01",
+          "tipo": "pares",
+          "enunciado": "Ligue cada operador ao seu significado",
+          "opcoes": null,
+          "respostasAceitas": [
+            [
+              "==",
+              "igual a"
+            ],
+            [
+              "!=",
+              "diferente de"
+            ],
+            [
+              ">",
+              "maior que"
+            ],
+            [
+              "<=",
+              "menor ou igual a"
+            ]
+          ],
+          "explicacao": "Esses operadores comparam dois valores e respondem True ou False."
+        },
+        {
+          "id": "u1-l6-e02",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "print(5 > 3)",
+          "opcoes": [
+            "True",
+            "False",
+            "5 > 3",
+            "Dá erro"
+          ],
+          "respostasAceitas": [
+            "True"
+          ],
+          "explicacao": "5 é maior que 3, então a comparação é verdadeira: True."
+        },
+        {
+          "id": "u1-l6-e03",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "print(10 == 5)",
+          "opcoes": [
+            "False",
+            "True",
+            "10",
+            "Dá erro"
+          ],
+          "respostasAceitas": [
+            "False"
+          ],
+          "explicacao": "10 não é igual a 5, então a comparação é falsa: False."
+        },
+        {
+          "id": "u1-l6-e04",
+          "tipo": "multipla_escolha",
+          "enunciado": "Qual é a diferença entre = e ==?",
+          "opcoes": [
+            "= guarda um valor, == compara dois valores",
+            "São a mesma coisa",
+            "= compara, == guarda um valor",
+            "== só funciona com textos"
+          ],
+          "respostasAceitas": [
+            "= guarda um valor, == compara dois valores"
+          ],
+          "explicacao": "Um = guarda um valor numa variável. Dois == perguntam se dois valores são iguais."
+        },
+        {
+          "id": "u1-l6-e05",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "print(True and False)",
+          "opcoes": [
+            "False",
+            "True",
+            "None",
+            "Dá erro"
+          ],
+          "respostasAceitas": [
+            "False"
+          ],
+          "explicacao": "O and só dá True quando os dois lados são True."
+        },
+        {
+          "id": "u1-l6-e06",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "print(True or False)",
+          "opcoes": [
+            "True",
+            "False",
+            "None",
+            "Dá erro"
+          ],
+          "respostasAceitas": [
+            "True"
+          ],
+          "explicacao": "O or dá True quando pelo menos um dos lados é True."
+        },
+        {
+          "id": "u1-l6-e07",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "print(not True)",
+          "opcoes": [
+            "False",
+            "True",
+            "None",
+            "Dá erro"
+          ],
+          "respostasAceitas": [
+            "False"
+          ],
+          "explicacao": "O not inverte: not True vira False e not False vira True."
+        },
+        {
+          "id": "u1-l6-e08",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "idade = 20\nprint(idade >= 18 and idade < 60)",
+          "opcoes": [
+            "True",
+            "False",
+            "20",
+            "Dá erro"
+          ],
+          "respostasAceitas": [
+            "True"
+          ],
+          "explicacao": "20 >= 18 é True e 20 < 60 é True. True and True dá True."
+        },
+        {
+          "id": "u1-l6-e09",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "nota = 5\nprint(nota >= 7 or nota == 5)",
+          "opcoes": [
+            "True",
+            "False",
+            "5",
+            "Dá erro"
+          ],
+          "respostasAceitas": [
+            "True"
+          ],
+          "explicacao": "nota >= 7 é False, mas nota == 5 é True. Com or, basta um ser True."
+        },
+        {
+          "id": "u1-l6-e10",
+          "tipo": "pares",
+          "enunciado": "Ligue cada palavra ao que ela faz",
+          "opcoes": null,
+          "respostasAceitas": [
+            [
+              "and",
+              "as duas precisam ser verdade"
+            ],
+            [
+              "or",
+              "basta uma ser verdade"
+            ],
+            [
+              "not",
+              "inverte o valor"
+            ],
+            [
+              "!=",
+              "pergunta se é diferente"
+            ]
+          ],
+          "explicacao": "and exige as duas, or aceita uma e not inverte o resultado."
+        },
+        {
+          "id": "u1-l6-e11",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "print('a' == 'A')",
+          "opcoes": [
+            "False",
+            "True",
+            "a",
+            "Dá erro"
+          ],
+          "respostasAceitas": [
+            "False"
+          ],
+          "explicacao": "Para o Python, letra minúscula e maiúscula são diferentes."
+        },
+        {
+          "id": "u1-l6-e12",
+          "tipo": "blocos",
+          "enunciado": "Monte a comparação: idade é maior ou igual a 18",
+          "opcoes": [
+            "idade",
+            ">=",
+            "18",
+            "=>",
+            "="
+          ],
+          "respostasAceitas": [
+            [
+              "idade",
+              ">=",
+              "18"
+            ]
+          ],
+          "explicacao": "Maior ou igual se escreve >=, com o > primeiro."
+        },
+        {
+          "id": "u1-l6-e13",
+          "tipo": "digitar",
+          "enunciado": "Escreva o código que mostra se 7 é diferente de 3",
+          "opcoes": null,
+          "respostasAceitas": [
+            "print(7 != 3)",
+            "print(3 != 7)"
+          ],
+          "explicacao": "Diferente se escreve !=: print(7 != 3) mostra True."
+        }
+      ]
+    },
+    {
+      "id": "u1-rev",
+      "titulo": "Revisão",
+      "revisao": true,
+      "exercicios": [
+        {
+          "id": "u1-rev-e01",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "print('Olá' + ' mundo')",
+          "opcoes": [
+            "Olá mundo",
+            "'Olá' + ' mundo'",
+            "Olámundo",
+            "Dá erro"
+          ],
+          "respostasAceitas": [
+            "Olá mundo"
+          ],
+          "explicacao": "O + junta os dois textos. O espaço já estava no começo de ' mundo'."
+        },
+        {
+          "id": "u1-rev-e02",
+          "tipo": "pares",
+          "enunciado": "Ligue cada valor ao seu tipo",
+          "opcoes": null,
+          "respostasAceitas": [
+            [
+              "3",
+              "int"
+            ],
+            [
+              "3.0",
+              "float"
+            ],
+            [
+              "'3'",
+              "str"
+            ],
+            [
+              "3 > 2",
+              "bool"
+            ]
+          ],
+          "explicacao": "Uma comparação como 3 > 2 dá True, que é do tipo bool."
+        },
+        {
+          "id": "u1-rev-e03",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "x = 10\nx = x - 3\nprint(x)",
+          "opcoes": [
+            "7",
+            "10",
+            "13",
+            "x - 3"
+          ],
+          "respostasAceitas": [
+            "7"
+          ],
+          "explicacao": "x começa com 10 e depois recebe 10 - 3, que é 7."
+        },
+        {
+          "id": "u1-rev-e04",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "print(9 % 4)",
+          "opcoes": [
+            "1",
+            "2",
+            "2.25",
+            "0"
+          ],
+          "respostasAceitas": [
+            "1"
+          ],
+          "explicacao": "9 dividido por 4 dá 2 e sobra 1. O % mostra o resto."
+        },
+        {
+          "id": "u1-rev-e05",
+          "tipo": "multipla_escolha",
+          "enunciado": "A pessoa digita 16. Qual é o tipo de idade?",
+          "codigo": "idade = input('Idade? ')",
+          "opcoes": [
+            "str",
+            "int",
+            "float",
+            "bool"
+          ],
+          "respostasAceitas": [
+            "str"
+          ],
+          "explicacao": "Sem int(), o input() sempre devolve texto."
+        },
+        {
+          "id": "u1-rev-e06",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "a = int('6')\nb = 4\nprint(a + b)",
+          "opcoes": [
+            "10",
+            "64",
+            "Dá erro",
+            "a + b"
+          ],
+          "respostasAceitas": [
+            "10"
+          ],
+          "explicacao": "int('6') vira o número 6. Então 6 + 4 dá 10."
+        },
+        {
+          "id": "u1-rev-e07",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "print(3 != 3)",
+          "opcoes": [
+            "False",
+            "True",
+            "3",
+            "Dá erro"
+          ],
+          "respostasAceitas": [
+            "False"
+          ],
+          "explicacao": "!= pergunta se é diferente. 3 não é diferente de 3, então dá False."
+        },
+        {
+          "id": "u1-rev-e08",
+          "tipo": "multipla_escolha",
+          "enunciado": "Qual nome de variável NÃO é válido?",
+          "opcoes": [
+            "1lugar",
+            "lugar1",
+            "primeiro_lugar",
+            "lugar"
+          ],
+          "respostasAceitas": [
+            "1lugar"
+          ],
+          "explicacao": "O nome de uma variável não pode começar com número."
+        },
+        {
+          "id": "u1-rev-e09",
+          "tipo": "pares",
+          "enunciado": "Ligue cada função ao que ela faz",
+          "opcoes": null,
+          "respostasAceitas": [
+            [
+              "print()",
+              "mostra na tela"
+            ],
+            [
+              "input()",
+              "lê o que é digitado"
+            ],
+            [
+              "int()",
+              "converte para inteiro"
+            ],
+            [
+              "type()",
+              "diz o tipo do valor"
+            ]
+          ],
+          "explicacao": "Essas são as funções que você usou em toda a unidade."
+        },
+        {
+          "id": "u1-rev-e10",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "media = (8 + 6) / 2\nprint(media)",
+          "opcoes": [
+            "7.0",
+            "7",
+            "11.0",
+            "10"
+          ],
+          "respostasAceitas": [
+            "7.0"
+          ],
+          "explicacao": "Primeiro os parênteses: 8 + 6 = 14. Depois 14 / 2 = 7.0, com ponto porque / sempre dá float."
+        },
+        {
+          "id": "u1-rev-e11",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "chovendo = False\nprint(not chovendo)",
+          "opcoes": [
+            "True",
+            "False",
+            "chovendo",
+            "Dá erro"
+          ],
+          "respostasAceitas": [
+            "True"
+          ],
+          "explicacao": "not inverte o valor: not False dá True."
+        },
+        {
+          "id": "u1-rev-e12",
+          "tipo": "multipla_escolha",
+          "enunciado": "O que esse código mostra na tela?",
+          "codigo": "nome = 'Cobi'\nprint('Oi, ' + nome)",
+          "opcoes": [
+            "Oi, Cobi",
+            "Oi, nome",
+            "'Oi, ' + nome",
+            "Oi,Cobi"
+          ],
+          "respostasAceitas": [
+            "Oi, Cobi"
+          ],
+          "explicacao": "O + junta o texto 'Oi, ' com o valor da variável nome."
+        },
+        {
+          "id": "u1-rev-e13",
+          "tipo": "blocos",
+          "enunciado": "Monte o código que mostra a soma de a e b",
+          "opcoes": [
+            "print",
+            "(",
+            "a",
+            "+",
+            "b",
+            ")",
+            "'a + b'"
+          ],
+          "respostasAceitas": [
+            [
+              "print",
+              "(",
+              "a",
+              "+",
+              "b",
+              ")"
+            ],
+            [
+              "print",
+              "(",
+              "b",
+              "+",
+              "a",
+              ")"
+            ]
+          ],
+          "explicacao": "Sem aspas, a + b soma os valores. Com aspas, 'a + b' seria só um texto."
+        },
+        {
+          "id": "u1-rev-e14",
+          "tipo": "digitar",
+          "enunciado": "Guarde na variável total o resultado de 10 * 2",
+          "opcoes": null,
+          "respostasAceitas": [
+            "total = 10 * 2",
+            "total = 20"
+          ],
+          "explicacao": "Nome da variável, um =, e a conta: total = 10 * 2."
+        }
+      ]
+    }
+  ]
+}

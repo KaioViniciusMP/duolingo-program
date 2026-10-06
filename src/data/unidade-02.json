@@ -1,0 +1,44 @@
+{
+  "id": "u2",
+  "titulo": "Decisões",
+  "cor": "#8E5BD9",
+  "guia": [],
+  "licoes": [
+    {
+      "id": "u2-l1",
+      "titulo": "if simples",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u2-l2",
+      "titulo": "if/else",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u2-l3",
+      "titulo": "elif",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u2-l4",
+      "titulo": "Condições compostas",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u2-l5",
+      "titulo": "Indentação e erros comuns",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u2-rev",
+      "titulo": "Revisão",
+      "revisao": true,
+      "exercicios": []
+    }
+  ]
+}

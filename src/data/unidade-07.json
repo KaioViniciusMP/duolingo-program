@@ -1,0 +1,44 @@
+{
+  "id": "u7",
+  "titulo": "Tuplas e dicionários",
+  "cor": "#5B6CD6",
+  "guia": [],
+  "licoes": [
+    {
+      "id": "u7-l1",
+      "titulo": "Tuplas e imutabilidade",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u7-l2",
+      "titulo": "Desempacotamento",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u7-l3",
+      "titulo": "Dicionário: criar, acessar e alterar",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u7-l4",
+      "titulo": ".keys(), .values(), .items()",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u7-l5",
+      "titulo": "Percorrer um dicionário",
+      "revisao": false,
+      "exercicios": []
+    },
+    {
+      "id": "u7-rev",
+      "titulo": "Revisão",
+      "revisao": true,
+      "exercicios": []
+    }
+  ]
+}
