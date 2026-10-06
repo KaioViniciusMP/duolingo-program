@@ -1,0 +1,86 @@
+:root {
+  /* Cores do Python */
+  --azul: #3776ab;
+  --azul-escuro: #24557f;
+  --azul-claro: #ddeefc;
+  --amarelo: #ffd43b;
+  --amarelo-escuro: #e0a800;
+
+  /* Feedback */
+  --verde: #2fb344;
+  --verde-escuro: #1f7a2e;
+  --verde-claro: #d9f7de;
+  --vermelho: #e5484d;
+  --vermelho-escuro: #a8262b;
+  --vermelho-claro: #ffe1e2;
+
+  --texto: #1f2a37;
+  --cinza: #8592a3;
+  --cinza-claro: #e3e8ee;
+  --fundo: #ffffff;
+  --codigo-fundo: #1e2a3a;
+  --codigo-texto: #e6edf3;
+
+  --raio: 14px;
+  --fonte: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --fonte-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--fonte);
+  -webkit-tap-highlight-color: transparent;
+}
+
+#root {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+button {
+  font: inherit;
+}
+
+/* Botão principal */
+/* A cor vem de --botao-cor / --botao-sombra, que o pai pode definir. */
+.botao {
+  min-height: 52px;
+  padding: 0 24px;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--botao-cor, var(--azul));
+  border: none;
+  border-radius: var(--raio);
+  box-shadow: 0 4px 0 var(--botao-sombra, var(--azul-escuro));
+  cursor: pointer;
+}
+
+.botao:active:not(:disabled) {
+  transform: translateY(4px);
+  box-shadow: none;
+}
+
+.botao:disabled {
+  color: var(--cinza);
+  background: var(--cinza-claro);
+  box-shadow: none;
+  cursor: default;
+}
+
+.botao--largo {
+  width: 100%;
+}
