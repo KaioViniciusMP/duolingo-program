@@ -114,10 +114,10 @@ Formato de `opcoes` e `respostasAceitas` por tipo:
 1. ✅ Motor da lição com `multipla_escolha` e `pares`, usando uma lição de teste sobre `print`.
 2. ✅ Os demais tipos de exercício, um por vez: `blocos`, `digitar`, `lacuna`, `ordenar_linhas`, `encontrar_erro` e `prever_saida`.
 3. ✅ Trilha, desbloqueio, partes, splash, guia e progresso salvo (feita antes da etapa 2, a pedido).
-4. XP, sequência de dias, lição concluída, incentivo e confirmação de saída.
-5. PWA: instalação e funcionamento offline.
+4. XP, sequência de dias, lição concluída, incentivo e confirmação de saída. ✅ Incentivo, confirmação de saída, boas-vindas e lição concluída (com Cobi, precisão e tempo). Faltam XP, sequência, meta diária e o cartão de XP / tela da 🔥, que dependem da regra de XP.
+5. ✅ PWA: instalação e funcionamento offline (ícones gerados de `public/icone.svg` com `npx pwa-assets-generator`).
 6. Conteúdo completo, unidade por unidade. (A unidade 1 já está escrita; as unidades 2 a 7 só têm os títulos das lições.)
-7. Acabamento: animações, sons, mascote e "Praticar erros".
+7. Acabamento: animações, sons, mascote e "Praticar erros". ✅ "Praticar erros" (reaproveita a tela da Lição).
 
 ## Como trabalhar neste projeto
 
