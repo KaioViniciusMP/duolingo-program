@@ -45,14 +45,14 @@ O conteúdo fica sempre separado das telas: nenhum exercício escrito direto em 
 |---|---|
 | Splash | Toda vez que o app abre: Cobi entrando, nome PyLingo e barra de carregamento (~1,6 s). Um toque pula. |
 | Boas-vindas (só na primeira vez) | Mascote, frase curta e botão "Começar", com escolha da meta diária (1, 2 ou 3), que pode ser trocada no Perfil. |
-| Trilha (home) | Caminho em zigue-zague de lições em círculos "3D", agrupadas por unidade. O cabeçalho colorido da unidade fica preso no topo e tem o botão do guia. Estados: concluída (✓), atual (anel de partes + etiqueta "Começar" + Cobi ao lado) e bloqueada (cinza com cadeado). A revisão usa 🏆. Tocar num círculo abre um balão com título, "Lição X de Y · Parte N de M" e o botão Começar / Refazer / Em breve. No topo: sequência 🔥 e XP total. Botão "Praticar erros" liberado após a unidade 1. Barra inferior: Trilha e Perfil. |
+| Trilha (home) | Caminho em zigue-zague de lições em círculos "3D", agrupadas por unidade. O cabeçalho colorido da unidade fica preso no topo e tem o botão do guia. Estados: concluída (✓), atual (anel de partes + etiqueta "Começar" + Cobi ao lado), pendente (liberada por um salto, colorida sem o Cobi), bloqueada (cinza com cadeado) e ⏩ "Pular pra cá?". Uma setinha flutuante volta para a lição atual quando ela sai da tela. A revisão usa 🏆. Tocar num círculo abre um balão com título, "Lição X de Y · Parte N de M" e o botão Começar / Refazer / Em breve. No topo: sequência 🔥 e XP total. Botão "Praticar erros" liberado após a unidade 1. Barra inferior: Trilha e Perfil. |
 | Guia da unidade | Resumo de cada assunto da unidade com exemplos de código (campo `guia` do JSON). |
 | Lição | Barra de progresso no topo, "X" para sair, enunciado, área do exercício e botão "Verificar" fixo embaixo, desativado até haver resposta. |
 | Faixa de feedback | Verde: "Boa!" + "Continuar". Vermelha: resposta correta + explicação de 1 a 2 linhas + "Entendi". |
 | Incentivo | Depois de 2 erros seguidos: mascote + "Errar faz parte, vamos de novo?". |
 | Confirmar saída | Ao tocar no "X": "Espera! Você vai perder o progresso desta lição", com "Continuar aprendendo" e "Sair". |
 | Lição concluída | Mascote comemorando e três cartões: XP ganho, precisão (% de acerto na primeira tentativa) e tempo. Se a sequência aumentou, mostra antes uma tela extra da 🔥. |
-| Perfil | XP total, maior sequência, lições concluídas e "Zerar progresso" com confirmação. |
+| Perfil | XP total, maior sequência, lições concluídas, tema (Automático / Claro / Escuro), sons liga/desliga e "Zerar progresso" com confirmação. |
 | Praticar erros | Até 10 exercícios, dos mais errados para os menos. Cada acerto de primeira tira 1 do contador do exercício; com 0 ele sai da lista. Sem erros, o botão fica desativado com "Nenhum erro para praticar 🎉". |
 
 ## Regras do motor da lição
@@ -62,6 +62,7 @@ O conteúdo fica sempre separado das telas: nenhum exercício escrito direto em 
 - XP: 10 por lição concluída, mais 5 de bônus se não houver nenhum erro. Refazer uma lição já concluída vale 5 XP.
 - Sequência de dias: conta qualquer dia com pelo menos uma lição concluída. Se o aluno passar um dia inteiro sem estudar, ela volta a zero. O dia vira à meia-noite do fuso do aparelho.
 - Desbloqueio sequencial: cada lição abre a próxima. A lição de revisão no fim da unidade desbloqueia a unidade seguinte.
+- Pular pra cá: o primeiro círculo de cada unidade fechada vira um ⏩ "Pular pra cá?". Ele abre um teste com até 10 exercícios sorteados das unidades anteriores ainda não concluídas. No teste o erro não volta para a fila e o 4º exercício errado encerra (passa com até 3). Passar libera a unidade escolhida e as de antes (`unidadesLiberadas`); as lições puladas ficam **pendentes** (liberadas, não concluídas) e, dentro de cada unidade, continuam uma por vez. Os erros do teste contam para "Praticar erros". Das lições liberadas, a mais adiantada é a "atual" (com o Cobi).
 - Ordem dentro da lição (o motor ordena sozinho; a ordem no JSON não importa): 1) reconhecimento: `pares`, `multipla_escolha`, `prever_saida` com opções; 2) meio: `lacuna`, `blocos`, `encontrar_erro`; 3) produção: `digitar`, `ordenar_linhas`, `prever_saida` digitado.
 - Registrar quantas vezes cada exercício foi errado; isso alimenta "Praticar erros".
 - Em `pares`, errar um par conta como erro (para a precisão e para "Praticar erros"), mas o exercício não volta para o fim da fila.
@@ -84,7 +85,8 @@ O conteúdo fica sempre separado das telas: nenhum exercício escrito direto em 
 - **Unidade:** id, titulo, cor, guia[] ({titulo, texto, codigo}), licoes[]
 - **Licao:** id, titulo, revisao (true na última da unidade), exercicios[]. Uma lição sem exercícios aparece como "Em breve".
 - **Exercicio:** id (`u1-l2-e03`, nunca muda depois de publicado), tipo, enunciado, codigo (opcional), opcoes, respostasAceitas[], explicacao
-- **Progresso:** licoesConcluidas, partesConcluidas (id da lição → total de partes feitas, inclusive ao refazer), xpTotal, sequenciaAtual, maiorSequencia, ultimoDiaEstudo, errosPorExercicio
+- **Progresso:** licoesConcluidas, partesConcluidas (id da lição → total de partes feitas, inclusive ao refazer), unidadesLiberadas, boasVindasVista, xpTotal, sequenciaAtual, maiorSequencia, ultimoDiaEstudo, errosPorExercicio
+- **Configurações** (chave `pylingo:configuracoes`, não somem ao zerar): tema (`sistema`, `claro`, `escuro`) e sons
 
 Formato de `opcoes` e `respostasAceitas` por tipo:
 
@@ -117,7 +119,7 @@ Formato de `opcoes` e `respostasAceitas` por tipo:
 4. XP, sequência de dias, lição concluída, incentivo e confirmação de saída. ✅ Incentivo, confirmação de saída, boas-vindas e lição concluída (com Cobi, precisão e tempo). Faltam XP, sequência, meta diária e o cartão de XP / tela da 🔥, que dependem da regra de XP.
 5. ✅ PWA: instalação e funcionamento offline (ícones gerados de `public/icone.svg` com `npx pwa-assets-generator`).
 6. Conteúdo completo, unidade por unidade. (A unidade 1 já está escrita; as unidades 2 a 7 só têm os títulos das lições.)
-7. Acabamento: animações, sons, mascote e "Praticar erros". ✅ "Praticar erros" (reaproveita a tela da Lição).
+7. Acabamento: animações, sons, mascote e "Praticar erros". ✅ "Praticar erros" (reaproveita a tela da Lição), sons (Web Audio, sem arquivos), modo escuro, "Pular pra cá" e setinha da Trilha.
 
 ## Como trabalhar neste projeto
 
@@ -129,4 +131,4 @@ Formato de `opcoes` e `respostasAceitas` por tipo:
 
 ## Para depois
 
-Modo desafio com vidas · login e sincronização · ranking semanal · Python real no navegador (Pyodide) · modo escuro · baús de recompensa entre as lições da Trilha.
+Modo desafio com vidas · login e sincronização · ranking semanal · Python real no navegador (Pyodide) · baús de recompensa entre as lições da Trilha.
