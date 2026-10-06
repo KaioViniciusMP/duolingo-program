@@ -1,0 +1,38 @@
+.encontrar-erro {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+}
+
+.encontrar-erro__linha {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* Cada trecho tocável parece um pedacinho de código com contorno sutil */
+.encontrar-erro__trecho {
+  min-width: 32px;
+  min-height: 40px;
+  margin: 2px 1px;
+  padding: 0 6px;
+  font-family: var(--fonte-mono);
+  font-size: 15px;
+  white-space: pre;
+  color: var(--codigo-texto);
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.encontrar-erro__trecho:disabled {
+  cursor: default;
+}
+
+.encontrar-erro__trecho--selecionado {
+  background: rgba(255, 212, 59, 0.2);
+  border-color: var(--amarelo);
+}

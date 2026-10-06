@@ -73,6 +73,16 @@ describe('conteúdo do curso', () => {
     }
   })
 
+  it('encontrar_erro: o trecho do bug existe na linha indicada e não é só espaço', () => {
+    for (const e of exercicios.filter((e) => e.tipo === 'encontrar_erro')) {
+      expect(e.respostasAceitas.length, e.id).toBeGreaterThan(0)
+      for (const [linha, trecho] of e.respostasAceitas) {
+        expect(e.opcoes[linha], e.id).toContain(trecho)
+        expect(trecho.trim(), e.id).not.toBe('')
+      }
+    }
+  })
+
   it('digitar: tem pelo menos uma resposta aceita', () => {
     for (const e of exercicios.filter((e) => e.tipo === 'digitar')) {
       expect(e.respostasAceitas.length, e.id).toBeGreaterThan(0)

@@ -263,6 +263,46 @@
             "print"
           ],
           "explicacao": "Quem mostra na tela é o print, escrito todo em minúsculas."
+        },
+        {
+          "id": "u1-l1-e14",
+          "tipo": "encontrar_erro",
+          "enunciado": "Toque no trecho com erro",
+          "opcoes": [
+            [
+              "Print",
+              "(",
+              "'Olá'",
+              ")"
+            ]
+          ],
+          "respostasAceitas": [
+            [
+              0,
+              "Print"
+            ]
+          ],
+          "explicacao": "O Python diferencia maiúsculas de minúsculas: o certo é print, com p minúsculo."
+        },
+        {
+          "id": "u1-l1-e15",
+          "tipo": "encontrar_erro",
+          "enunciado": "Toque no trecho com erro",
+          "opcoes": [
+            [
+              "print",
+              "(",
+              "'Bom dia",
+              ")"
+            ]
+          ],
+          "respostasAceitas": [
+            [
+              0,
+              "'Bom dia"
+            ]
+          ],
+          "explicacao": "Faltou fechar as aspas: o certo é 'Bom dia'."
         }
       ]
     },
@@ -550,6 +590,31 @@
             ]
           ],
           "explicacao": "O Python lê de cima para baixo. A variável precisa ganhar um valor antes de ser usada."
+        },
+        {
+          "id": "u1-l2-e17",
+          "tipo": "encontrar_erro",
+          "enunciado": "Toque no trecho com erro",
+          "opcoes": [
+            [
+              "nome",
+              " = ",
+              "'Ana'"
+            ],
+            [
+              "print",
+              "(",
+              "Nome",
+              ")"
+            ]
+          ],
+          "respostasAceitas": [
+            [
+              1,
+              "Nome"
+            ]
+          ],
+          "explicacao": "A variável se chama nome, com n minúsculo. Nome seria outra variável, que não existe."
         }
       ]
     },
@@ -1585,6 +1650,30 @@
             "or"
           ],
           "explicacao": "Com or, basta uma das condições ser verdadeira. 5 > 3 é True, então tudo dá True."
+        },
+        {
+          "id": "u1-l6-e16",
+          "tipo": "encontrar_erro",
+          "enunciado": "Toque no trecho com erro",
+          "opcoes": [
+            [
+              "print",
+              "(",
+              "5",
+              " ",
+              "=",
+              " ",
+              "5",
+              ")"
+            ]
+          ],
+          "respostasAceitas": [
+            [
+              0,
+              "="
+            ]
+          ],
+          "explicacao": "Para comparar se dois valores são iguais, use ==. Um = sozinho serve para guardar valor."
         }
       ]
     },
@@ -1927,6 +2016,36 @@
             ]
           ],
           "explicacao": "Os dois números precisam ser lidos antes da soma, e a soma antes do print."
+        },
+        {
+          "id": "u1-rev-e18",
+          "tipo": "encontrar_erro",
+          "enunciado": "Toque no trecho com erro",
+          "opcoes": [
+            [
+              "nome",
+              " = ",
+              "input",
+              "(",
+              "'Nome? '",
+              ")"
+            ],
+            [
+              "print",
+              "(",
+              "'Olá, '",
+              " + ",
+              "nme",
+              ")"
+            ]
+          ],
+          "respostasAceitas": [
+            [
+              1,
+              "nme"
+            ]
+          ],
+          "explicacao": "O nome da variável foi escrito errado: o certo é nome."
         }
       ]
     }

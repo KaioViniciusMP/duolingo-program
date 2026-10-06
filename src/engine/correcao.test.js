@@ -158,3 +158,24 @@ describe('ordenar_linhas', () => {
     expect(respostaParaMostrar(exercicio)).toBe("if idade >= 18:\n    print('Pode votar')")
   })
 })
+
+describe('encontrar_erro', () => {
+  const exercicio = {
+    tipo: 'encontrar_erro',
+    opcoes: [['nome', ' = ', "'Ana'"], ['Print', '(', 'nome', ')']],
+    respostasAceitas: [[1, 'Print']],
+  }
+
+  it('aceita o trecho do bug na linha certa', () => {
+    expect(corrigir(exercicio, [1, 'Print'])).toBe(true)
+  })
+
+  it('recusa outro trecho', () => {
+    expect(corrigir(exercicio, [1, 'nome'])).toBe(false)
+    expect(corrigir(exercicio, [0, 'nome'])).toBe(false)
+  })
+
+  it('mostra a linha (contando de 1) e o trecho', () => {
+    expect(respostaParaMostrar(exercicio)).toBe('Linha 2: Print')
+  })
+})

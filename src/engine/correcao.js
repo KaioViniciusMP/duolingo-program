@@ -84,6 +84,12 @@ export function montarLinhas(linhas) {
   return linhas.map(({ texto, nivel }) => ' '.repeat(4 * nivel) + texto).join('\n')
 }
 
+// Em `encontrar_erro`, a resposta é [linha, trecho]: o número da linha
+// (começando em 0) e o texto do trecho tocado.
+export function corrigirEncontrarErro(exercicio, [linha, trecho]) {
+  return exercicio.respostasAceitas.some(([l, t]) => l === linha && t === trecho)
+}
+
 // Em `lacuna`, o espaço vazio é marcado com ___ no código.
 export const LACUNA = '___'
 
@@ -99,6 +105,7 @@ export function respostaParaMostrar(exercicio) {
   if (exercicio.tipo === 'blocos') return juntarBlocos(primeira)
   if (exercicio.tipo === 'lacuna') return preencherLacuna(exercicio.codigo, primeira)
   if (exercicio.tipo === 'ordenar_linhas') return montarLinhas(primeira)
+  if (exercicio.tipo === 'encontrar_erro') return `Linha ${primeira[0] + 1}: ${primeira[1].trim()}`
   return primeira
 }
 
@@ -108,6 +115,7 @@ const corretores = {
   blocos: corrigirBlocos,
   digitar: corrigirDigitar,
   ordenar_linhas: corrigirOrdenarLinhas,
+  encontrar_erro: corrigirEncontrarErro,
 }
 
 export function corrigir(exercicio, resposta) {

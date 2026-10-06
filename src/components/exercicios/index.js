@@ -1,5 +1,6 @@
 import Blocos from './Blocos.jsx'
 import Digitar from './Digitar.jsx'
+import EncontrarErro from './EncontrarErro.jsx'
 import Lacuna from './Lacuna.jsx'
 import MultiplaEscolha from './MultiplaEscolha.jsx'
 import OrdenarLinhas from './OrdenarLinhas.jsx'
@@ -18,4 +19,5 @@ export const componentesPorTipo = {
   digitar: Digitar,
   lacuna: Lacuna,
   ordenar_linhas: OrdenarLinhas,
+  encontrar_erro: EncontrarErro,
 }
