@@ -130,3 +130,42 @@
   color: var(--azul-texto);
   background: var(--azul-claro);
 }
+
+.ajuste--linha {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Chave liga/desliga */
+.chave {
+  position: relative;
+  width: 60px;
+  height: 36px;
+  padding: 0;
+  background: var(--cinza-claro);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.chave__bolinha {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 28px;
+  height: 28px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.2);
+  transition: transform 0.15s;
+}
+
+.chave--ligada {
+  background: var(--verde);
+}
+
+.chave--ligada .chave__bolinha {
+  transform: translateX(24px);
+}

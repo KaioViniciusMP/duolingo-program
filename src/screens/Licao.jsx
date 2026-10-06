@@ -8,6 +8,7 @@ import { componentesPorTipo, TIPOS_AUTOCORRIGIDOS, TIPOS_COM_CODIGO_PROPRIO } fr
 import { corrigir, respostaParaMostrar } from '../engine/correcao.js'
 import { criarLicao, exercicioAtual, licaoTerminada, progresso, registrarResposta } from '../engine/fila.js'
 import { testeTerminado } from '../engine/salto.js'
+import { tocarSom } from '../sons.js'
 import './Licao.css'
 
 // teste: teste de salto (o erro não volta para a fila e o 4º erro encerra).
@@ -33,6 +34,7 @@ export default function Licao({ licao, teste = false, onSair, onConcluir }) {
   const autocorrigido = TIPOS_AUTOCORRIGIDOS.has(exercicio.tipo)
 
   function responder(resultado) {
+    tocarSom(resultado.correto ? 'acerto' : 'erro')
     setEstado(registrarResposta(estado, resultado))
     setFeedback({ exercicioId: exercicio.id, correto: resultado.correto })
   }

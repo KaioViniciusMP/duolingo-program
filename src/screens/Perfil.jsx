@@ -55,6 +55,20 @@ export default function Perfil({ progresso, totalDeLicoes, configuracoes, onMuda
             ))}
           </div>
         </div>
+        <div className="ajuste ajuste--linha">
+          <span className="ajuste__rotulo" id="sons-rotulo">
+            Sons
+          </span>
+          <button
+            role="switch"
+            aria-checked={configuracoes.sons}
+            aria-labelledby="sons-rotulo"
+            className={`chave ${configuracoes.sons ? 'chave--ligada' : ''}`}
+            onClick={() => onMudarConfiguracoes({ sons: !configuracoes.sons })}
+          >
+            <span className="chave__bolinha" />
+          </button>
+        </div>
       </section>
 
       {confirmando ? (

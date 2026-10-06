@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { parCorreto } from '../../engine/correcao.js'
 import { embaralhar } from '../../engine/embaralhar.js'
+import { tocarSom } from '../../sons.js'
 import './Pares.css'
 
 // Valida cada par na hora. Um par errado pisca em vermelho, mas o exercício
@@ -32,9 +33,12 @@ export default function Pares({ exercicio, bloqueado, onConcluir }) {
     if (parCorreto(exercicio, esquerda[nova.esq], direita[nova.dir])) {
       const novosFeitos = { esq: [...feitos.esq, nova.esq], dir: [...feitos.dir, nova.dir] }
       setFeitos(novosFeitos)
+      // O último par toca o som de acerto da lição, não o do par.
+      if (novosFeitos.esq.length < esquerda.length) tocarSom('par')
       if (novosFeitos.esq.length === esquerda.length) onConcluir({ erros: erros.current })
     } else {
       erros.current += 1
+      tocarSom('erro')
       setParErrado(nova)
     }
   }

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import BarraNavegacao from './components/BarraNavegacao.jsx'
 import { curso } from './data/curso.js'
 import { aplicarTema, carregarConfiguracoes, salvarConfiguracoes } from './engine/configuracoes.js'
+import { ligarSons } from './sons.js'
 import { dividirEmPartes, proximaParte } from './engine/partes.js'
 import { exerciciosParaPraticar, praticaLiberada, registrarPratica } from './engine/praticar.js'
 import { carregarProgresso, progressoInicial, registrarParteConcluida, salvarProgresso, somarErros } from './engine/progresso.js'
@@ -32,6 +33,7 @@ export default function App() {
     setConfiguracoes(novas)
     salvarConfiguracoes(novas)
     aplicarTema(novas.tema)
+    ligarSons(novas.sons)
   }
 
   function atualizarProgresso(novo) {
