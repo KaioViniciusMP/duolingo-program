@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from 'react'
 import BarraProgresso from '../components/BarraProgresso.jsx'
 import Codigo from '../components/Codigo.jsx'
+import ConfirmarSaida from '../components/ConfirmarSaida.jsx'
 import FaixaFeedback from '../components/FaixaFeedback.jsx'
 import { componentesPorTipo, TIPOS_AUTOCORRIGIDOS, TIPOS_COM_CODIGO_PROPRIO } from '../components/exercicios/index.js'
 import { corrigir, respostaParaMostrar } from '../engine/correcao.js'
@@ -18,6 +19,7 @@ export default function Licao({ licao, onSair, onConcluir }) {
   const [feedback, setFeedback] = useState(null)
   // Muda a cada exercício para remontar o componente (e reembaralhar as opções).
   const [rodada, setRodada] = useState(0)
+  const [confirmandoSaida, setConfirmandoSaida] = useState(false)
   const inicio = useRef(Date.now())
 
   const exercicio = exerciciosPorId[feedback ? feedback.exercicioId : exercicioAtual(estado)]
@@ -46,7 +48,7 @@ export default function Licao({ licao, onSair, onConcluir }) {
   return (
     <div className="licao">
       <header className="licao__topo">
-        <button className="licao__sair" onClick={onSair} aria-label="Sair da lição">
+        <button className="licao__sair" onClick={() => setConfirmandoSaida(true)} aria-label="Sair da lição">
           ✕
         </button>
         <BarraProgresso valor={progresso(estado)} />
@@ -87,6 +89,8 @@ export default function Licao({ licao, onSair, onConcluir }) {
           </div>
         )}
       </footer>
+
+      {confirmandoSaida && <ConfirmarSaida onContinuar={() => setConfirmandoSaida(false)} onSair={onSair} />}
     </div>
   )
 }
