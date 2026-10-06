@@ -124,3 +124,37 @@ describe('lacuna', () => {
     expect(respostaParaMostrar(exercicio)).toBe('print(idade >= 18)')
   })
 })
+
+describe('ordenar_linhas', () => {
+  const exercicio = {
+    tipo: 'ordenar_linhas',
+    respostasAceitas: [
+      [
+        { texto: 'if idade >= 18:', nivel: 0 },
+        { texto: "print('Pode votar')", nivel: 1 },
+      ],
+    ],
+  }
+
+  it('aceita a ordem e o recuo certos', () => {
+    expect(corrigir(exercicio, [
+      { texto: 'if idade >= 18:', nivel: 0 },
+      { texto: "print('Pode votar')", nivel: 1 },
+    ])).toBe(true)
+  })
+
+  it('recusa recuo errado ou ordem trocada', () => {
+    expect(corrigir(exercicio, [
+      { texto: 'if idade >= 18:', nivel: 0 },
+      { texto: "print('Pode votar')", nivel: 0 },
+    ])).toBe(false)
+    expect(corrigir(exercicio, [
+      { texto: "print('Pode votar')", nivel: 1 },
+      { texto: 'if idade >= 18:', nivel: 0 },
+    ])).toBe(false)
+  })
+
+  it('mostra as linhas com 4 espaços por nível', () => {
+    expect(respostaParaMostrar(exercicio)).toBe("if idade >= 18:\n    print('Pode votar')")
+  })
+})

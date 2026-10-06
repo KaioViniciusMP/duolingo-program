@@ -70,6 +70,20 @@ export function juntarBlocos(blocos) {
     )
 }
 
+// Em `ordenar_linhas`, a resposta é a lista de { texto, nivel } na ordem escolhida.
+export function corrigirOrdenarLinhas(exercicio, resposta) {
+  return exercicio.respostasAceitas.some(
+    (aceita) =>
+      aceita.length === resposta.length &&
+      aceita.every((linha, i) => linha.texto === resposta[i].texto && linha.nivel === resposta[i].nivel),
+  )
+}
+
+// Cada nível de recuo vale 4 espaços.
+export function montarLinhas(linhas) {
+  return linhas.map(({ texto, nivel }) => ' '.repeat(4 * nivel) + texto).join('\n')
+}
+
 // Em `lacuna`, o espaço vazio é marcado com ___ no código.
 export const LACUNA = '___'
 
@@ -84,6 +98,7 @@ export function respostaParaMostrar(exercicio) {
   const primeira = exercicio.respostasAceitas[0]
   if (exercicio.tipo === 'blocos') return juntarBlocos(primeira)
   if (exercicio.tipo === 'lacuna') return preencherLacuna(exercicio.codigo, primeira)
+  if (exercicio.tipo === 'ordenar_linhas') return montarLinhas(primeira)
   return primeira
 }
 
@@ -92,6 +107,7 @@ const corretores = {
   lacuna: corrigirMultiplaEscolha,
   blocos: corrigirBlocos,
   digitar: corrigirDigitar,
+  ordenar_linhas: corrigirOrdenarLinhas,
 }
 
 export function corrigir(exercicio, resposta) {

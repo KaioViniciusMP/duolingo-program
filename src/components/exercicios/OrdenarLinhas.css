@@ -1,0 +1,132 @@
+.ordenar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* O código montado, no mesmo fundo escuro dos outros códigos */
+.ordenar__codigo {
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+  background: var(--codigo-fundo);
+  border-radius: var(--raio);
+  min-height: 64px;
+}
+
+.ordenar__linha {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 48px;
+}
+
+.ordenar__numero {
+  width: 18px;
+  flex-shrink: 0;
+  font-family: var(--fonte-mono);
+  font-size: 12px;
+  text-align: right;
+  color: #8b97a8;
+}
+
+.ordenar__conteudo {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  /* Cada nível de recuo desloca a linha para a direita */
+  padding: 0 8px 0 calc(8px + var(--nivel) * 24px);
+  text-align: left;
+  color: var(--codigo-texto);
+  background: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: padding-left 0.12s ease-out;
+}
+
+.ordenar__conteudo:active:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ordenar__conteudo:disabled {
+  cursor: default;
+}
+
+.ordenar__texto {
+  font-family: var(--fonte-mono);
+  font-size: 15px;
+  white-space: pre;
+}
+
+.ordenar__setas {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.ordenar__seta {
+  width: 44px;
+  height: 44px;
+  font-size: 14px;
+  color: var(--codigo-texto);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.ordenar__seta:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* Lugar onde a próxima linha vai entrar */
+.ordenar__vaga {
+  height: 40px;
+  margin: 4px 0 4px 24px;
+  border: 2px dashed #4a5a70;
+  border-radius: 8px;
+}
+
+.ordenar__banco {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ordenar__opcao {
+  min-height: 48px;
+  padding: 10px 14px;
+  text-align: left;
+  font-family: var(--fonte-mono);
+  font-size: 15px;
+  white-space: pre;
+  overflow-x: auto;
+  color: var(--texto);
+  background: var(--fundo);
+  border: 2px solid var(--cinza-claro);
+  border-bottom-width: 4px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.ordenar__opcao:active:not(:disabled) {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+  margin-bottom: 2px;
+}
+
+.ordenar__opcao:disabled {
+  cursor: default;
+}
+
+/* Espaço deixado no banco pela linha usada */
+.ordenar__opcao--vazia {
+  color: transparent;
+  background: var(--cinza-claro);
+  border-color: var(--cinza-claro);
+  border-bottom-width: 2px;
+  margin-top: 2px;
+  user-select: none;
+}

@@ -523,6 +523,33 @@
             "idade"
           ],
           "explicacao": "Sem aspas, o Python usa o valor da variável. Com aspas, seria só o texto \"idade\"."
+        },
+        {
+          "id": "u1-l2-e16",
+          "tipo": "ordenar_linhas",
+          "enunciado": "Coloque as linhas na ordem para mostrar o total",
+          "opcoes": [
+            "print(total)",
+            "total = preco * 2",
+            "preco = 10"
+          ],
+          "respostasAceitas": [
+            [
+              {
+                "texto": "preco = 10",
+                "nivel": 0
+              },
+              {
+                "texto": "total = preco * 2",
+                "nivel": 0
+              },
+              {
+                "texto": "print(total)",
+                "nivel": 0
+              }
+            ]
+          ],
+          "explicacao": "O Python lê de cima para baixo. A variável precisa ganhar um valor antes de ser usada."
         }
       ]
     },
@@ -1016,6 +1043,33 @@
             "float"
           ],
           "explicacao": "Para números com ponto, como 1.75, use float()."
+        },
+        {
+          "id": "u1-l4-e15",
+          "tipo": "ordenar_linhas",
+          "enunciado": "Coloque as linhas na ordem para calcular a idade",
+          "opcoes": [
+            "print(idade)",
+            "ano = int(input('Ano em que nasceu? '))",
+            "idade = 2026 - ano"
+          ],
+          "respostasAceitas": [
+            [
+              {
+                "texto": "ano = int(input('Ano em que nasceu? '))",
+                "nivel": 0
+              },
+              {
+                "texto": "idade = 2026 - ano",
+                "nivel": 0
+              },
+              {
+                "texto": "print(idade)",
+                "nivel": 0
+              }
+            ]
+          ],
+          "explicacao": "Primeiro lê o ano, depois faz a conta e só no fim mostra o resultado."
         }
       ]
     },
@@ -1823,6 +1877,56 @@
             "input"
           ],
           "explicacao": "O input() espera a pessoa digitar e devolve o que ela escreveu."
+        },
+        {
+          "id": "u1-rev-e17",
+          "tipo": "ordenar_linhas",
+          "enunciado": "Coloque as linhas na ordem para somar dois números",
+          "opcoes": [
+            "print(soma)",
+            "soma = a + b",
+            "a = int(input())",
+            "b = int(input())"
+          ],
+          "respostasAceitas": [
+            [
+              {
+                "texto": "a = int(input())",
+                "nivel": 0
+              },
+              {
+                "texto": "b = int(input())",
+                "nivel": 0
+              },
+              {
+                "texto": "soma = a + b",
+                "nivel": 0
+              },
+              {
+                "texto": "print(soma)",
+                "nivel": 0
+              }
+            ],
+            [
+              {
+                "texto": "b = int(input())",
+                "nivel": 0
+              },
+              {
+                "texto": "a = int(input())",
+                "nivel": 0
+              },
+              {
+                "texto": "soma = a + b",
+                "nivel": 0
+              },
+              {
+                "texto": "print(soma)",
+                "nivel": 0
+              }
+            ]
+          ],
+          "explicacao": "Os dois números precisam ser lidos antes da soma, e a soma antes do print."
         }
       ]
     }

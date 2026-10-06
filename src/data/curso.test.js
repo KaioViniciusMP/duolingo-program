@@ -62,6 +62,17 @@ describe('conteúdo do curso', () => {
     }
   })
 
+  it('ordenar_linhas: cada resposta usa todas as linhas, com recuo de 0 a 3', () => {
+    for (const e of exercicios.filter((e) => e.tipo === 'ordenar_linhas')) {
+      expect(e.respostasAceitas.length, e.id).toBeGreaterThan(0)
+      for (const aceita of e.respostasAceitas) {
+        expect(aceita.map((l) => l.texto).sort(), e.id).toEqual([...e.opcoes].sort())
+        for (const l of aceita) expect([0, 1, 2, 3], e.id).toContain(l.nivel)
+      }
+      for (const linha of e.opcoes) expect(linha, e.id).toBe(linha.trim())
+    }
+  })
+
   it('digitar: tem pelo menos uma resposta aceita', () => {
     for (const e of exercicios.filter((e) => e.tipo === 'digitar')) {
       expect(e.respostasAceitas.length, e.id).toBeGreaterThan(0)

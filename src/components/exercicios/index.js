@@ -2,6 +2,7 @@ import Blocos from './Blocos.jsx'
 import Digitar from './Digitar.jsx'
 import Lacuna from './Lacuna.jsx'
 import MultiplaEscolha from './MultiplaEscolha.jsx'
+import OrdenarLinhas from './OrdenarLinhas.jsx'
 import Pares from './Pares.jsx'
 
 // Tipos que o aluno resolve sozinhos, sem o botão "Verificar".
@@ -16,4 +17,5 @@ export const componentesPorTipo = {
   blocos: Blocos,
   digitar: Digitar,
   lacuna: Lacuna,
+  ordenar_linhas: OrdenarLinhas,
 }
