@@ -1,0 +1,37 @@
+.multipla-escolha {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.opcao {
+  min-height: 52px;
+  padding: 12px 16px;
+  text-align: left;
+  font-family: var(--fonte-mono);
+  font-size: 16px;
+  white-space: pre-wrap;
+  color: var(--texto);
+  background: var(--fundo);
+  border: 2px solid var(--cinza-claro);
+  border-bottom-width: 4px;
+  border-radius: var(--raio);
+  cursor: pointer;
+  transition: background 0.1s, border-color 0.1s;
+}
+
+.opcao:active:not(:disabled) {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+  margin-bottom: 2px;
+}
+
+.opcao--selecionada {
+  background: var(--azul-claro);
+  border-color: var(--azul);
+  color: var(--azul-escuro);
+}
+
+.opcao:disabled {
+  cursor: default;
+}
