@@ -1,7 +1,8 @@
 .trilha {
   --altura-topo: calc(56px + env(safe-area-inset-top, 0px));
   min-height: 100dvh;
-  padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+  /* Espaço para a barra inferior e o botão "Praticar erros" */
+  padding-bottom: calc(160px + env(safe-area-inset-bottom, 0px));
 }
 
 /* Barra de topo: sequência e XP */
@@ -291,4 +292,37 @@
 @keyframes aparecer {
   from { opacity: 0; transform: translateY(-6px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Botão "Praticar erros", flutuando logo acima da barra inferior */
+.trilha__praticar {
+  position: fixed;
+  left: 50%;
+  bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+  z-index: 18;
+  transform: translateX(-50%);
+  min-height: 48px;
+  padding: 0 22px;
+  font-size: 15px;
+  font-weight: 800;
+  white-space: nowrap;
+  color: #fff;
+  background: var(--vermelho);
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 4px 0 var(--vermelho-escuro), 0 6px 16px rgb(0 0 0 / 0.15);
+  cursor: pointer;
+}
+
+.trilha__praticar:active:not(:disabled) {
+  transform: translate(-50%, 4px);
+  box-shadow: 0 0 0 var(--vermelho-escuro);
+}
+
+.trilha__praticar:disabled {
+  color: var(--cinza);
+  background: var(--fundo);
+  border: 2px solid var(--cinza-claro);
+  box-shadow: 0 6px 16px rgb(0 0 0 / 0.08);
+  cursor: default;
 }

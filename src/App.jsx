@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import BarraNavegacao from './components/BarraNavegacao.jsx'
 import { curso } from './data/curso.js'
 import { dividirEmPartes, proximaParte } from './engine/partes.js'
+import { exerciciosParaPraticar, praticaLiberada, registrarPratica } from './engine/praticar.js'
 import { carregarProgresso, progressoInicial, registrarParteConcluida, salvarProgresso } from './engine/progresso.js'
 import { encontrarLicao, totalDeLicoes } from './engine/trilha.js'
 import BoasVindas from './screens/BoasVindas.jsx'
@@ -39,12 +40,27 @@ export default function App() {
     })
   }
 
+  function comecarPratica() {
+    const exercicios = exerciciosParaPraticar(curso, progresso.errosPorExercicio)
+    setTela({ nome: 'licao', licao: { id: 'praticar-erros', exercicios }, pratica: true })
+  }
+
   function concluirParte({ estado, tempoMs }) {
+    if (tela.pratica) {
+      atualizarProgresso(registrarPratica(progresso, estado))
+      setTela({ nome: 'concluida', estado, tempoMs, titulo: 'Treino concluído!' })
+      return
+    }
     const { licao, totalDePartes } = tela
     const novo = registrarParteConcluida(progresso, licao.id, totalDePartes, estado.errosPorExercicio)
     const licaoTerminou = novo.partesConcluidas[licao.id] === totalDePartes
     atualizarProgresso(novo)
     setTela({ nome: 'concluida', estado, tempoMs, titulo: licaoTerminou ? 'Lição concluída!' : 'Parte concluída!' })
+  }
+
+  function estadoDaPratica() {
+    if (!praticaLiberada(curso, progresso.licoesConcluidas)) return 'bloqueada'
+    return exerciciosParaPraticar(curso, progresso.errosPorExercicio).length > 0 ? 'disponivel' : 'vazia'
   }
 
   if (mostrarSplash) return <Splash onFim={fecharSplash} />
@@ -85,6 +101,8 @@ export default function App() {
         <Trilha
           curso={curso}
           progresso={progresso}
+          pratica={estadoDaPratica()}
+          onPraticar={comecarPratica}
           onComecarLicao={comecarLicao}
           onAbrirGuia={(unidadeId) => setTela({ nome: 'guia', unidadeId })}
         />

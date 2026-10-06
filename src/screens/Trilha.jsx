@@ -8,7 +8,8 @@ import './Trilha.css'
 // Deslocamento horizontal (px) de cada círculo, formando o zigue-zague.
 const ZIGUE_ZAGUE = [0, 44, 70, 44, 0, -44, -70, -44]
 
-export default function Trilha({ curso, progresso, onComecarLicao, onAbrirGuia }) {
+// pratica: 'bloqueada' (antes de terminar a unidade 1), 'vazia' (sem erros) ou 'disponivel'.
+export default function Trilha({ curso, progresso, pratica, onComecarLicao, onAbrirGuia, onPraticar }) {
   const estados = useMemo(() => estadosDasLicoes(curso, progresso.licoesConcluidas), [curso, progresso])
   const [selecionada, setSelecionada] = useState(null)
   const atualRef = useRef(null)
@@ -65,6 +66,19 @@ export default function Trilha({ curso, progresso, onComecarLicao, onAbrirGuia }
           </ol>
         </section>
       ))}
+
+      {pratica !== 'bloqueada' && (
+        <button
+          className="trilha__praticar"
+          disabled={pratica === 'vazia'}
+          onClick={(e) => {
+            e.stopPropagation()
+            onPraticar()
+          }}
+        >
+          {pratica === 'vazia' ? 'Nenhum erro para praticar 🎉' : '💪 Praticar erros'}
+        </button>
+      )}
     </div>
   )
 }
