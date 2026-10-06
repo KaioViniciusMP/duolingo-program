@@ -1,0 +1,48 @@
+.digitar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.digitar__campo {
+  width: 100%;
+  padding: 14px;
+  font-family: var(--fonte-mono);
+  font-size: 16px; /* 16px evita o zoom automático do iPhone ao focar */
+  line-height: 1.5;
+  color: var(--texto);
+  background: #f7f9fb;
+  border: 2px solid var(--cinza-claro);
+  border-radius: var(--raio);
+  resize: none;
+  tab-size: 4;
+}
+
+.digitar__campo:focus {
+  outline: none;
+  border-color: var(--azul);
+  background: var(--fundo);
+}
+
+.digitar__simbolos {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+
+.digitar__simbolo {
+  min-width: 44px;
+  min-height: 44px;
+  font-family: var(--fonte-mono);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--azul-escuro);
+  background: var(--azul-claro);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.digitar__simbolo:active:not(:disabled) {
+  background: color-mix(in srgb, var(--azul) 30%, white);
+}
