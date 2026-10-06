@@ -1,0 +1,31 @@
+.boas-vindas {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  padding: calc(24px + env(safe-area-inset-top, 0px)) 16px calc(24px + env(safe-area-inset-bottom, 0px));
+  text-align: center;
+}
+
+.boas-vindas__centro {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.boas-vindas__titulo {
+  margin: 12px 0 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--azul);
+}
+
+.boas-vindas__texto {
+  max-width: 300px;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--texto);
+}

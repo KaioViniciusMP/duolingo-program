@@ -4,6 +4,7 @@ import { curso } from './data/curso.js'
 import { dividirEmPartes, proximaParte } from './engine/partes.js'
 import { carregarProgresso, progressoInicial, registrarParteConcluida, salvarProgresso } from './engine/progresso.js'
 import { encontrarLicao, totalDeLicoes } from './engine/trilha.js'
+import BoasVindas from './screens/BoasVindas.jsx'
 import Guia from './screens/Guia.jsx'
 import Licao from './screens/Licao.jsx'
 import LicaoConcluida from './screens/LicaoConcluida.jsx'
@@ -47,6 +48,10 @@ export default function App() {
   }
 
   if (mostrarSplash) return <Splash onFim={fecharSplash} />
+
+  if (!progresso.boasVindasVista) {
+    return <BoasVindas onComecar={() => atualizarProgresso({ ...progresso, boasVindasVista: true })} />
+  }
 
   if (tela.nome === 'licao') {
     return <Licao licao={tela.licao} onSair={() => setTela({ nome: 'trilha' })} onConcluir={concluirParte} />

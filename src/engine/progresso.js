@@ -12,6 +12,8 @@ export function progressoInicial() {
     errosPorExercicio: {},
     // id da lição -> total de partes concluídas (conta também ao refazer)
     partesConcluidas: {},
+    // false até o aluno passar pela tela de boas-vindas
+    boasVindasVista: false,
   }
 }
 
