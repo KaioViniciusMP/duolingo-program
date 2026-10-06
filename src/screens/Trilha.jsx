@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { IconeCadeado, IconeCheck, IconeEstrela, IconeLivro, IconePular, IconeTrofeu } from '../components/Icones.jsx'
+import { IconeCadeado, IconeCheck, IconeEstrela, IconeLivro, IconePular, IconeSeta, IconeTrofeu } from '../components/Icones.jsx'
 import Mascote from '../components/Mascote.jsx'
 import { quantidadeDePartes } from '../engine/partes.js'
 import { ERROS_PERMITIDOS, EXERCICIOS_NO_TESTE } from '../engine/salto.js'
@@ -22,9 +22,27 @@ export default function Trilha({ curso, progresso, pratica, onComecarLicao, onAb
   const [selecionada, setSelecionada] = useState(null)
   const atualRef = useRef(null)
 
+  // Para onde a lição atual foi quando sai da tela: 'cima', 'baixo' ou null (visível).
+  const [direcaoDaAtual, setDirecaoDaAtual] = useState(null)
+
   useEffect(() => {
     atualRef.current?.scrollIntoView({ block: 'center' })
   }, [])
+
+  useEffect(() => {
+    const alvo = atualRef.current
+    if (!alvo) return
+    // As margens descontam os cabeçalhos presos no topo e a barra de baixo.
+    const observador = new IntersectionObserver(
+      ([entrada]) => {
+        if (entrada.isIntersecting) setDirecaoDaAtual(null)
+        else setDirecaoDaAtual(entrada.boundingClientRect.top < 0 ? 'cima' : 'baixo')
+      },
+      { rootMargin: '-140px 0px -150px 0px' },
+    )
+    observador.observe(alvo)
+    return () => observador.disconnect()
+  }, [estados])
 
   return (
     <div className="trilha" onClick={() => setSelecionada(null)}>
@@ -78,6 +96,19 @@ export default function Trilha({ curso, progresso, pratica, onComecarLicao, onAb
           </ol>
         </section>
       ))}
+
+      {direcaoDaAtual && (
+        <button
+          className={`trilha__voltar trilha__voltar--${direcaoDaAtual}`}
+          aria-label="Voltar para a lição atual"
+          onClick={(e) => {
+            e.stopPropagation()
+            atualRef.current?.scrollIntoView({ block: 'center', behavior: 'smooth' })
+          }}
+        >
+          <IconeSeta tamanho={26} />
+        </button>
+      )}
 
       {pratica !== 'bloqueada' && (
         <button

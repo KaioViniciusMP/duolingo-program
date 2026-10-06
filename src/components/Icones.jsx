@@ -86,3 +86,11 @@ export function IconePular(props) {
     </Icone>
   )
 }
+
+export function IconeSeta(props) {
+  return (
+    <Icone {...props}>
+      <path d="M12 19V5M5.5 11.5L12 5l6.5 6.5" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+    </Icone>
+  )
+}

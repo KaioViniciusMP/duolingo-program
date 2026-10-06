@@ -327,3 +327,33 @@
   box-shadow: 0 6px 16px rgb(0 0 0 / 0.08);
   cursor: default;
 }
+
+/* Setinha que volta para a lição atual quando ela sai da tela */
+.trilha__voltar {
+  position: fixed;
+  right: max(16px, calc(50vw - 240px + 16px));
+  /* Acima do botão "Praticar erros", para os dois não se encostarem */
+  bottom: calc(144px + env(safe-area-inset-bottom, 0px));
+  z-index: 18;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  color: var(--azul);
+  background: var(--fundo);
+  border: 2px solid var(--cinza-claro);
+  border-radius: 16px;
+  box-shadow: 0 4px 0 var(--cinza-claro);
+  cursor: pointer;
+  animation: aparecer 0.15s ease-out;
+}
+
+.trilha__voltar--baixo svg {
+  transform: rotate(180deg);
+}
+
+.trilha__voltar:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}
