@@ -5,14 +5,14 @@
 
 .faixa-feedback--certo {
   background: var(--verde-claro);
-  color: var(--verde-escuro);
+  color: var(--verde-texto);
   --botao-cor: var(--verde);
   --botao-sombra: var(--verde-escuro);
 }
 
 .faixa-feedback--errado {
   background: var(--vermelho-claro);
-  color: var(--vermelho-escuro);
+  color: var(--vermelho-texto);
   --botao-cor: var(--vermelho);
   --botao-sombra: var(--vermelho-escuro);
 }

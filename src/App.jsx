@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import BarraNavegacao from './components/BarraNavegacao.jsx'
 import { curso } from './data/curso.js'
+import { aplicarTema, carregarConfiguracoes, salvarConfiguracoes } from './engine/configuracoes.js'
 import { dividirEmPartes, proximaParte } from './engine/partes.js'
 import { exerciciosParaPraticar, praticaLiberada, registrarPratica } from './engine/praticar.js'
 import { carregarProgresso, progressoInicial, registrarParteConcluida, salvarProgresso, somarErros } from './engine/progresso.js'
@@ -17,6 +18,7 @@ import Trilha from './screens/Trilha.jsx'
 export default function App() {
   const [mostrarSplash, setMostrarSplash] = useState(true)
   const [progresso, setProgresso] = useState(carregarProgresso)
+  const [configuracoes, setConfiguracoes] = useState(carregarConfiguracoes)
   const [tela, setTela] = useState({ nome: 'trilha' })
   const fecharSplash = useCallback(() => setMostrarSplash(false), [])
 
@@ -24,6 +26,13 @@ export default function App() {
   useEffect(() => {
     if (tela.nome !== 'trilha') window.scrollTo(0, 0)
   }, [tela.nome])
+
+  function mudarConfiguracoes(mudancas) {
+    const novas = { ...configuracoes, ...mudancas }
+    setConfiguracoes(novas)
+    salvarConfiguracoes(novas)
+    aplicarTema(novas.tema)
+  }
 
   function atualizarProgresso(novo) {
     setProgresso(novo)
@@ -134,6 +143,8 @@ export default function App() {
         <Perfil
           progresso={progresso}
           totalDeLicoes={totalDeLicoes(curso)}
+          configuracoes={configuracoes}
+          onMudarConfiguracoes={mudarConfiguracoes}
           onZerar={() => atualizarProgresso(progressoInicial())}
         />
       ) : (

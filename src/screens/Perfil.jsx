@@ -2,8 +2,14 @@ import { useState } from 'react'
 import Mascote from '../components/Mascote.jsx'
 import './Perfil.css'
 
-// Versão simples. Meta diária e o resto do perfil entram na etapa 4.
-export default function Perfil({ progresso, totalDeLicoes, onZerar }) {
+const OPCOES_DE_TEMA = [
+  { valor: 'sistema', rotulo: 'Automático' },
+  { valor: 'claro', rotulo: 'Claro' },
+  { valor: 'escuro', rotulo: 'Escuro' },
+]
+
+// A meta diária entra junto com a regra de XP.
+export default function Perfil({ progresso, totalDeLicoes, configuracoes, onMudarConfiguracoes, onZerar }) {
   const [confirmando, setConfirmando] = useState(false)
 
   return (
@@ -29,6 +35,27 @@ export default function Perfil({ progresso, totalDeLicoes, onZerar }) {
           <span className="estatistica__rotulo">Lições concluídas</span>
         </div>
       </div>
+
+      <section className="ajustes" aria-label="Ajustes">
+        <div className="ajuste">
+          <span className="ajuste__rotulo" id="tema-rotulo">
+            Tema
+          </span>
+          <div className="seletor" role="radiogroup" aria-labelledby="tema-rotulo">
+            {OPCOES_DE_TEMA.map(({ valor, rotulo }) => (
+              <button
+                key={valor}
+                role="radio"
+                aria-checked={configuracoes.tema === valor}
+                className={`seletor__opcao ${configuracoes.tema === valor ? 'seletor__opcao--ativa' : ''}`}
+                onClick={() => onMudarConfiguracoes({ tema: valor })}
+              >
+                {rotulo}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {confirmando ? (
         <div className="perfil__confirmar" role="alertdialog" aria-labelledby="zerar-titulo">

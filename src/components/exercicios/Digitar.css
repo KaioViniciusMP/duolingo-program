@@ -11,7 +11,7 @@
   font-size: 16px; /* 16px evita o zoom automático do iPhone ao focar */
   line-height: 1.5;
   color: var(--texto);
-  background: #f7f9fb;
+  background: var(--fundo-campo);
   border: 2px solid var(--cinza-claro);
   border-radius: var(--raio);
   resize: none;
@@ -36,7 +36,7 @@
   font-family: var(--fonte-mono);
   font-size: 18px;
   font-weight: 600;
-  color: var(--azul-escuro);
+  color: var(--azul-texto);
   background: var(--azul-claro);
   border: none;
   border-radius: 10px;
@@ -44,5 +44,5 @@
 }
 
 .digitar__simbolo:active:not(:disabled) {
-  background: color-mix(in srgb, var(--azul) 30%, white);
+  background: color-mix(in srgb, var(--azul) 30%, var(--fundo));
 }

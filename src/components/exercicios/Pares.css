@@ -28,13 +28,13 @@
 .par--selecionado {
   background: var(--azul-claro);
   border-color: var(--azul);
-  color: var(--azul-escuro);
+  color: var(--azul-texto);
 }
 
 .par--errado {
   background: var(--vermelho-claro);
   border-color: var(--vermelho);
-  color: var(--vermelho-escuro);
+  color: var(--vermelho-texto);
   animation: tremer 0.3s;
 }
 

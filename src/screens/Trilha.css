@@ -134,9 +134,9 @@
 }
 
 .no--bloqueada .no__circulo {
-  color: #aab4c0;
+  color: var(--bloqueado-icone);
   background: var(--cinza-claro);
-  box-shadow: 0 7px 0 #c5ccd6;
+  box-shadow: 0 7px 0 var(--bloqueado-sombra);
 }
 
 .no--concluida .no__circulo {
@@ -243,7 +243,7 @@
 
 .no--bloqueada .balao {
   color: var(--cinza);
-  background: #f4f6f8;
+  background: var(--fundo-suave);
   border: 2px solid var(--cinza-claro);
   box-shadow: none;
 }

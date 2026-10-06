@@ -14,10 +14,19 @@
   --vermelho-escuro: #a8262b;
   --vermelho-claro: #ffe1e2;
 
+  /* Texto colorido sobre os fundos "-claro" */
+  --azul-texto: #24557f;
+  --verde-texto: #1f7a2e;
+  --vermelho-texto: #a8262b;
+
   --texto: #1f2a37;
   --cinza: #8592a3;
   --cinza-claro: #e3e8ee;
   --fundo: #ffffff;
+  --fundo-campo: #f7f9fb;
+  --fundo-suave: #f4f6f8;
+  --bloqueado-icone: #aab4c0;
+  --bloqueado-sombra: #c5ccd6;
   --codigo-fundo: #1e2a3a;
   --codigo-texto: #e6edf3;
 
@@ -26,6 +35,60 @@
   --fonte-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
 
   color-scheme: light;
+}
+
+/* Modo escuro: segue o celular, a não ser que o aluno escolha no Perfil.
+   Os mesmos valores aparecem duas vezes porque o CSS não deixa juntar as duas regras. */
+:root[data-tema='escuro'] {
+  --azul: #4a8fd0;
+  --azul-escuro: #2d6596;
+  --azul-claro: #1b3247;
+  --azul-texto: #9ccaf5;
+  --verde: #3cc354;
+  --verde-escuro: #238a35;
+  --verde-claro: #16301d;
+  --verde-texto: #7ee08d;
+  --vermelho: #ee5a5f;
+  --vermelho-escuro: #b0333a;
+  --vermelho-claro: #3a1a1d;
+  --vermelho-texto: #ff9a9e;
+  --texto: #e8edf2;
+  --cinza: #8b9aab;
+  --cinza-claro: #2f3d4a;
+  --fundo: #121c24;
+  --fundo-campo: #18242e;
+  --fundo-suave: #18242e;
+  --bloqueado-icone: #5b6b7b;
+  --bloqueado-sombra: #24313c;
+  --codigo-fundo: #0b131a;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema='claro']) {
+    --azul: #4a8fd0;
+    --azul-escuro: #2d6596;
+    --azul-claro: #1b3247;
+    --azul-texto: #9ccaf5;
+    --verde: #3cc354;
+    --verde-escuro: #238a35;
+    --verde-claro: #16301d;
+    --verde-texto: #7ee08d;
+    --vermelho: #ee5a5f;
+    --vermelho-escuro: #b0333a;
+    --vermelho-claro: #3a1a1d;
+    --vermelho-texto: #ff9a9e;
+    --texto: #e8edf2;
+    --cinza: #8b9aab;
+    --cinza-claro: #2f3d4a;
+    --fundo: #121c24;
+    --fundo-campo: #18242e;
+    --fundo-suave: #18242e;
+    --bloqueado-icone: #5b6b7b;
+    --bloqueado-sombra: #24313c;
+    --codigo-fundo: #0b131a;
+    color-scheme: dark;
+  }
 }
 
 *,

@@ -69,7 +69,7 @@
 .perfil__confirmar p {
   margin: 0 0 14px;
   font-weight: 700;
-  color: var(--vermelho-escuro);
+  color: var(--vermelho-texto);
 }
 
 .perfil__confirmar-botoes {
@@ -80,4 +80,53 @@
 .botao--perigo {
   --botao-cor: var(--vermelho);
   --botao-sombra: var(--vermelho-escuro);
+}
+
+/* Ajustes: tema e sons */
+.ajustes {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--cinza-claro);
+  border-radius: var(--raio);
+}
+
+.ajuste {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+}
+
+.ajuste + .ajuste {
+  border-top: 2px solid var(--cinza-claro);
+}
+
+.ajuste__rotulo {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.seletor {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  padding: 4px;
+  background: var(--fundo-suave);
+  border-radius: 12px;
+}
+
+.seletor__opcao {
+  min-height: 44px;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--cinza);
+  background: none;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.seletor__opcao--ativa {
+  color: var(--azul-texto);
+  background: var(--azul-claro);
 }

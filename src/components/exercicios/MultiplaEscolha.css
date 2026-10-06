@@ -29,7 +29,7 @@
 .opcao--selecionada {
   background: var(--azul-claro);
   border-color: var(--azul);
-  color: var(--azul-escuro);
+  color: var(--azul-texto);
 }
 
 .opcao:disabled {
