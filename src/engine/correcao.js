@@ -90,6 +90,11 @@ export function corrigirEncontrarErro(exercicio, [linha, trecho]) {
   return exercicio.respostasAceitas.some(([l, t]) => l === linha && t === trecho)
 }
 
+// `prever_saida` com opções funciona como múltipla escolha; sem opções, como digitar.
+export function corrigirPreverSaida(exercicio, resposta) {
+  return exercicio.opcoes ? corrigirMultiplaEscolha(exercicio, resposta) : corrigirDigitar(exercicio, resposta)
+}
+
 // Em `lacuna`, o espaço vazio é marcado com ___ no código.
 export const LACUNA = '___'
 
@@ -116,6 +121,7 @@ const corretores = {
   digitar: corrigirDigitar,
   ordenar_linhas: corrigirOrdenarLinhas,
   encontrar_erro: corrigirEncontrarErro,
+  prever_saida: corrigirPreverSaida,
 }
 
 export function corrigir(exercicio, resposta) {

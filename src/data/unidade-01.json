@@ -303,6 +303,21 @@
             ]
           ],
           "explicacao": "Faltou fechar as aspas: o certo é 'Bom dia'."
+        },
+        {
+          "id": "u1-l1-e16",
+          "tipo": "prever_saida",
+          "enunciado": "O que este código mostra?",
+          "codigo": "print('Oi')\nprint('Tchau')",
+          "opcoes": [
+            "Oi\nTchau",
+            "Oi Tchau",
+            "'Oi'\n'Tchau'"
+          ],
+          "respostasAceitas": [
+            "Oi\nTchau"
+          ],
+          "explicacao": "Cada print mostra uma linha, e as aspas não aparecem na tela."
         }
       ]
     },
@@ -1135,6 +1150,21 @@
             ]
           ],
           "explicacao": "Primeiro lê o ano, depois faz a conta e só no fim mostra o resultado."
+        },
+        {
+          "id": "u1-l4-e16",
+          "tipo": "prever_saida",
+          "enunciado": "O que este código mostra?",
+          "codigo": "n = '5'\nprint(n + n)",
+          "opcoes": [
+            "55",
+            "10",
+            "n + n"
+          ],
+          "respostasAceitas": [
+            "55"
+          ],
+          "explicacao": "'5' entre aspas é texto. Somar textos junta um no outro: '5' + '5' dá 55."
         }
       ]
     },
@@ -1388,6 +1418,17 @@
             "**"
           ],
           "explicacao": "No Python, potência é **. O ^ não faz potência."
+        },
+        {
+          "id": "u1-l5-e15",
+          "tipo": "prever_saida",
+          "enunciado": "Digite o que este código mostra",
+          "codigo": "print(7 // 2)\nprint(7 % 2)",
+          "opcoes": null,
+          "respostasAceitas": [
+            "3\n1"
+          ],
+          "explicacao": "7 // 2 dá 3 (sem a parte decimal) e 7 % 2 dá 1 (o resto). Cada print fica numa linha."
         }
       ]
     },
@@ -2046,6 +2087,17 @@
             ]
           ],
           "explicacao": "O nome da variável foi escrito errado: o certo é nome."
+        },
+        {
+          "id": "u1-rev-e19",
+          "tipo": "prever_saida",
+          "enunciado": "Digite o que este código mostra",
+          "codigo": "a = 3\nb = a * 2\nprint(a + b)",
+          "opcoes": null,
+          "respostasAceitas": [
+            "9"
+          ],
+          "explicacao": "b vale 3 * 2 = 6, então a + b é 3 + 6 = 9."
         }
       ]
     }

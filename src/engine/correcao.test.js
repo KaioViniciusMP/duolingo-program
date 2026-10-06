@@ -179,3 +179,18 @@ describe('encontrar_erro', () => {
     expect(respostaParaMostrar(exercicio)).toBe('Linha 2: Print')
   })
 })
+
+describe('prever_saida', () => {
+  it('com opções, compara com a opção correta', () => {
+    const exercicio = { tipo: 'prever_saida', opcoes: ['5', '23'], respostasAceitas: ['5'] }
+    expect(corrigir(exercicio, '5')).toBe(true)
+    expect(corrigir(exercicio, '23')).toBe(false)
+  })
+
+  it('digitada, ignora espaços nas pontas e linhas em branco', () => {
+    const exercicio = { tipo: 'prever_saida', opcoes: null, respostasAceitas: ['1\n2\n3'] }
+    expect(corrigir(exercicio, '1\n2\n3\n')).toBe(true)
+    expect(corrigir(exercicio, ' 1\n 2\n 3')).toBe(true)
+    expect(corrigir(exercicio, '1 2 3')).toBe(false)
+  })
+})

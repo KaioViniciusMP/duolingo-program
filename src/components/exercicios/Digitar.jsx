@@ -4,7 +4,8 @@ import './Digitar.css'
 // Símbolos difíceis de achar no teclado do celular. O ⇥ insere 4 espaços de recuo.
 const SIMBOLOS = ['(', ')', "'", '"', ':', '=', '+', '-', '*', '[', ']', '⇥']
 
-export default function Digitar({ bloqueado, onMudarResposta }) {
+// comSimbolos e placeholder deixam o prever_saida reaproveitar o campo.
+export default function Digitar({ bloqueado, onMudarResposta, comSimbolos = true, placeholder = 'Digite o código aqui' }) {
   const [texto, setTexto] = useState('')
   const campo = useRef(null)
 
@@ -33,7 +34,7 @@ export default function Digitar({ bloqueado, onMudarResposta }) {
         value={texto}
         onChange={(e) => mudar(e.target.value)}
         disabled={bloqueado}
-        placeholder="Digite o código aqui"
+        placeholder={placeholder}
         rows={4}
         autoCapitalize="off"
         autoCorrect="off"
@@ -41,21 +42,23 @@ export default function Digitar({ bloqueado, onMudarResposta }) {
         spellCheck={false}
         aria-label="Sua resposta"
       />
-      <div className="digitar__simbolos" aria-label="Símbolos">
-        {SIMBOLOS.map((simbolo) => (
-          <button
-            key={simbolo}
-            className="digitar__simbolo"
-            disabled={bloqueado}
-            // Impede o campo de perder o foco (e o teclado de fechar) ao tocar.
-            onMouseDown={(e) => e.preventDefault()}
-            onClick={() => inserir(simbolo)}
-            aria-label={simbolo === '⇥' ? 'Recuo de 4 espaços' : simbolo}
-          >
-            {simbolo}
-          </button>
-        ))}
-      </div>
+      {comSimbolos && (
+        <div className="digitar__simbolos" aria-label="Símbolos">
+          {SIMBOLOS.map((simbolo) => (
+            <button
+              key={simbolo}
+              className="digitar__simbolo"
+              disabled={bloqueado}
+              // Impede o campo de perder o foco (e o teclado de fechar) ao tocar.
+              onMouseDown={(e) => e.preventDefault()}
+              onClick={() => inserir(simbolo)}
+              aria-label={simbolo === '⇥' ? 'Recuo de 4 espaços' : simbolo}
+            >
+              {simbolo}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

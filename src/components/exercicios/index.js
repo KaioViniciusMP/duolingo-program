@@ -5,6 +5,7 @@ import Lacuna from './Lacuna.jsx'
 import MultiplaEscolha from './MultiplaEscolha.jsx'
 import OrdenarLinhas from './OrdenarLinhas.jsx'
 import Pares from './Pares.jsx'
+import PreverSaida from './PreverSaida.jsx'
 
 // Tipos que o aluno resolve sozinhos, sem o botão "Verificar".
 export const TIPOS_AUTOCORRIGIDOS = new Set(['pares'])
@@ -20,4 +21,5 @@ export const componentesPorTipo = {
   lacuna: Lacuna,
   ordenar_linhas: OrdenarLinhas,
   encontrar_erro: EncontrarErro,
+  prever_saida: PreverSaida,
 }

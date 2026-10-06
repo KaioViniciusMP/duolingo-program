@@ -83,6 +83,18 @@ describe('conteúdo do curso', () => {
     }
   })
 
+  it('prever_saida: tem código e, se tiver opções, a saída está entre elas', () => {
+    for (const e of exercicios.filter((e) => e.tipo === 'prever_saida')) {
+      expect(e.codigo, e.id).toBeTruthy()
+      expect(e.respostasAceitas.length, e.id).toBeGreaterThan(0)
+      if (e.opcoes) {
+        expect(e.opcoes.length, e.id).toBeGreaterThanOrEqual(3)
+        expect(e.opcoes.length, e.id).toBeLessThanOrEqual(4)
+        for (const r of e.respostasAceitas) expect(e.opcoes, e.id).toContain(r)
+      }
+    }
+  })
+
   it('digitar: tem pelo menos uma resposta aceita', () => {
     for (const e of exercicios.filter((e) => e.tipo === 'digitar')) {
       expect(e.respostasAceitas.length, e.id).toBeGreaterThan(0)
