@@ -112,7 +112,7 @@ Formato de `opcoes` e `respostasAceitas` por tipo:
 ## Ordem de construção
 
 1. ✅ Motor da lição com `multipla_escolha` e `pares`, usando uma lição de teste sobre `print`.
-2. Os demais tipos de exercício, um por vez. ✅ `blocos` e `digitar`. Faltam `lacuna`, `ordenar_linhas`, `encontrar_erro` e `prever_saida`.
+2. Os demais tipos de exercício, um por vez. ✅ `blocos`, `digitar` e `lacuna`. Faltam `ordenar_linhas`, `encontrar_erro` e `prever_saida`.
 3. ✅ Trilha, desbloqueio, partes, splash, guia e progresso salvo (feita antes da etapa 2, a pedido).
 4. XP, sequência de dias, lição concluída, incentivo e confirmação de saída.
 5. PWA: instalação e funcionamento offline.
