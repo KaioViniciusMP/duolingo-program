@@ -1,0 +1,54 @@
+.licao {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.licao__topo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: calc(12px + env(safe-area-inset-top, 0px)) 16px 12px;
+}
+
+.licao__sair {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  font-size: 22px;
+  color: var(--cinza);
+  background: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.licao__corpo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 8px 16px 24px;
+}
+
+.licao__enunciado {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.licao__exercicio {
+  margin-top: 8px;
+}
+
+.licao__rodape {
+  position: sticky;
+  bottom: 0;
+  background: var(--fundo);
+  border-top: 2px solid var(--cinza-claro);
+}
+
+.licao__acao {
+  padding: 16px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+}
