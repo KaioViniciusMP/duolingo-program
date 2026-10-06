@@ -1,0 +1,37 @@
+.lacuna {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Mais espaço entre as linhas para a lacuna caber sem empurrar o texto */
+.lacuna__codigo {
+  line-height: 2.4;
+}
+
+.lacuna__espaco {
+  display: inline-block;
+  min-width: 3.2em;
+  min-height: 1.9em;
+  padding: 0 8px;
+  vertical-align: middle;
+  line-height: 1.6;
+  border-radius: 8px;
+  border: 2px dashed #8b97a8;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.lacuna__espaco--preenchido {
+  font: inherit;
+  font-weight: 600;
+  color: var(--texto);
+  background: var(--fundo);
+  border: 2px solid var(--cinza-claro);
+  border-bottom-width: 4px;
+  cursor: pointer;
+  animation: bloco-entrar 0.12s ease-out;
+}
+
+.lacuna__espaco--preenchido:disabled {
+  cursor: default;
+}

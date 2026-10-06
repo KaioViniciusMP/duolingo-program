@@ -70,14 +70,26 @@ export function juntarBlocos(blocos) {
     )
 }
 
+// Em `lacuna`, o espaço vazio é marcado com ___ no código.
+export const LACUNA = '___'
+
+// Linha do código que tem a lacuna, já preenchida com o bloco e sem o comentário.
+export function preencherLacuna(codigo, bloco) {
+  const linha = codigo.split('\n').find((l) => l.includes(LACUNA))
+  return linha.replace(LACUNA, bloco).replace(/\s+#.*$/, '').trim()
+}
+
 // Texto mostrado na faixa vermelha como "resposta correta".
 export function respostaParaMostrar(exercicio) {
   const primeira = exercicio.respostasAceitas[0]
-  return exercicio.tipo === 'blocos' ? juntarBlocos(primeira) : primeira
+  if (exercicio.tipo === 'blocos') return juntarBlocos(primeira)
+  if (exercicio.tipo === 'lacuna') return preencherLacuna(exercicio.codigo, primeira)
+  return primeira
 }
 
 const corretores = {
   multipla_escolha: corrigirMultiplaEscolha,
+  lacuna: corrigirMultiplaEscolha,
   blocos: corrigirBlocos,
   digitar: corrigirDigitar,
 }

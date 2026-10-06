@@ -2,7 +2,7 @@ import { useMemo, useRef, useState } from 'react'
 import BarraProgresso from '../components/BarraProgresso.jsx'
 import Codigo from '../components/Codigo.jsx'
 import FaixaFeedback from '../components/FaixaFeedback.jsx'
-import { componentesPorTipo, TIPOS_AUTOCORRIGIDOS } from '../components/exercicios/index.js'
+import { componentesPorTipo, TIPOS_AUTOCORRIGIDOS, TIPOS_COM_CODIGO_PROPRIO } from '../components/exercicios/index.js'
 import { corrigir, respostaParaMostrar } from '../engine/correcao.js'
 import { criarLicao, exercicioAtual, licaoTerminada, progresso, registrarResposta } from '../engine/fila.js'
 import './Licao.css'
@@ -54,7 +54,7 @@ export default function Licao({ licao, onSair, onConcluir }) {
 
       <main className="licao__corpo">
         <h1 className="licao__enunciado">{exercicio.enunciado}</h1>
-        {exercicio.codigo && <Codigo codigo={exercicio.codigo} />}
+        {exercicio.codigo && !TIPOS_COM_CODIGO_PROPRIO.has(exercicio.tipo) && <Codigo codigo={exercicio.codigo} />}
         <div className="licao__exercicio">
           <Componente
             key={rodada}

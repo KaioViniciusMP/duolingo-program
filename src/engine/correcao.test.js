@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { corrigir, juntarBlocos, normalizarCodigo, parCorreto } from './correcao.js'
+import { corrigir, juntarBlocos, normalizarCodigo, parCorreto, respostaParaMostrar } from './correcao.js'
 
 describe('multipla_escolha', () => {
   const exercicio = {
@@ -104,5 +104,23 @@ describe('digitar', () => {
 describe('normalizarCodigo', () => {
   it('troca aspas duplas por simples', () => {
     expect(normalizarCodigo('nome = "Ana"')).toBe("nome='Ana'")
+  })
+})
+
+describe('lacuna', () => {
+  const exercicio = {
+    tipo: 'lacuna',
+    codigo: 'idade = 17\nprint(idade ___ 18)   # maior ou igual?',
+    opcoes: ['>=', '=>', '>', '='],
+    respostasAceitas: ['>='],
+  }
+
+  it('aceita o bloco correto e recusa os outros', () => {
+    expect(corrigir(exercicio, '>=')).toBe(true)
+    expect(corrigir(exercicio, '>')).toBe(false)
+  })
+
+  it('mostra a linha da lacuna já preenchida, sem o comentário', () => {
+    expect(respostaParaMostrar(exercicio)).toBe('print(idade >= 18)')
   })
 })
