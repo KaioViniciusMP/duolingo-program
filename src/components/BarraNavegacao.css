@@ -1,0 +1,36 @@
+.barra-navegacao {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  z-index: 20;
+  display: flex;
+  width: 100%;
+  max-width: 480px;
+  transform: translateX(-50%);
+  padding: 6px 16px calc(6px + env(safe-area-inset-bottom, 0px));
+  background: var(--fundo);
+  border-top: 2px solid var(--cinza-claro);
+}
+
+.barra-navegacao__aba {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-height: 52px;
+  padding: 4px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--cinza);
+  background: none;
+  border: 2px solid transparent;
+  border-radius: var(--raio);
+  cursor: pointer;
+}
+
+.barra-navegacao__aba--ativa {
+  color: var(--azul);
+  background: var(--azul-claro);
+  border-color: color-mix(in srgb, var(--azul) 35%, transparent);
+}

@@ -1,0 +1,294 @@
+.trilha {
+  --altura-topo: calc(56px + env(safe-area-inset-top, 0px));
+  min-height: 100dvh;
+  padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+}
+
+/* Barra de topo: sequência e XP */
+.trilha__topo {
+  position: sticky;
+  top: 0;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--altura-topo);
+  padding: env(safe-area-inset-top, 0px) 20px 0;
+  background: var(--fundo);
+  border-bottom: 2px solid var(--cinza-claro);
+}
+
+.trilha__contador {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.trilha__contador--fogo { color: #f08a24; }
+.trilha__contador--xp { color: var(--amarelo-escuro); }
+
+/* Cabeçalho da unidade: fica preso no topo enquanto a unidade está na tela */
+.unidade {
+  --cor-escura: color-mix(in srgb, var(--cor) 72%, black);
+}
+
+.unidade__fixo {
+  position: sticky;
+  top: var(--altura-topo);
+  z-index: 12;
+  padding: 12px 16px 8px;
+  background: var(--fundo);
+}
+
+.unidade__cabecalho {
+  display: flex;
+  align-items: stretch;
+  color: #fff;
+  background: var(--cor);
+  border-radius: var(--raio);
+  box-shadow: 0 4px 0 var(--cor-escura);
+}
+
+.unidade__textos {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 16px;
+  min-width: 0;
+}
+
+.unidade__numero {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.85;
+}
+
+.unidade__titulo {
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.unidade__guia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  color: #fff;
+  background: none;
+  border: none;
+  border-left: 2px solid var(--cor-escura);
+  cursor: pointer;
+}
+
+/* Caminho de lições */
+.caminho {
+  list-style: none;
+  margin: 0;
+  padding: 64px 0 40px;
+}
+
+.no {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+/* Espaço para a etiqueta "Começar" e o anel não cobrirem a lição de cima */
+.no--atual {
+  padding-top: 64px;
+  padding-bottom: 20px;
+}
+
+.no__posicao {
+  position: relative;
+  transform: translateX(var(--deslocamento));
+}
+
+.no__circulo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 66px;
+  color: #fff;
+  background: var(--cor);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 7px 0 var(--cor-escura);
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.no__circulo:active {
+  transform: translateY(5px);
+  box-shadow: 0 2px 0 var(--cor-escura);
+}
+
+.no--bloqueada .no__circulo {
+  color: #aab4c0;
+  background: var(--cinza-claro);
+  box-shadow: 0 7px 0 #c5ccd6;
+}
+
+.no--concluida .no__circulo {
+  color: var(--amarelo);
+}
+
+/* Lição atual: anel com um segmento por parte, pulsando de leve */
+.anel {
+  position: absolute;
+  top: calc(50% + 3px);
+  left: 50%;
+  width: 104px;
+  height: 104px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: pulsar 1.6s ease-in-out infinite;
+}
+
+.anel__segmento {
+  fill: none;
+  stroke: var(--cinza-claro);
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+
+.anel__segmento--feito {
+  stroke: var(--cor);
+}
+
+@keyframes pulsar {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.05); }
+}
+
+.no__etiqueta {
+  position: absolute;
+  bottom: calc(100% + 18px);
+  left: 50%;
+  z-index: 2;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--cor);
+  background: var(--fundo);
+  border: 2px solid var(--cinza-claro);
+  border-radius: 12px;
+  transform: translateX(-50%);
+  animation: flutuar 1.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.no__etiqueta::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border: 7px solid transparent;
+  border-top-color: var(--fundo);
+  transform: translateX(-50%);
+}
+
+@keyframes flutuar {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -5px); }
+}
+
+/* Cobi ao lado da lição atual */
+.no__mascote {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.no__mascote--esquerda { left: 6%; }
+.no__mascote--direita { right: 6%; }
+
+/* Balão com o título e o botão Começar */
+.balao {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 16px;
+  right: 16px;
+  z-index: 10;
+  padding: 16px;
+  color: #fff;
+  background: var(--cor);
+  border-radius: var(--raio);
+  box-shadow: 0 4px 0 var(--cor-escura);
+  animation: aparecer 0.15s ease-out;
+}
+
+.balao::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: calc(50% + var(--deslocamento));
+  border: 10px solid transparent;
+  border-bottom-color: var(--cor);
+  transform: translateX(-50%);
+}
+
+.no--bloqueada .balao {
+  color: var(--cinza);
+  background: #f4f6f8;
+  border: 2px solid var(--cinza-claro);
+  box-shadow: none;
+}
+
+.no--bloqueada .balao::before {
+  border-bottom-color: var(--cinza-claro);
+}
+
+.balao__titulo {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.balao__detalhe {
+  margin: 4px 0 0;
+  font-size: 15px;
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+.balao__botao {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 14px;
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--cor);
+  background: #fff;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 0 rgb(0 0 0 / 0.15);
+  cursor: pointer;
+}
+
+.balao__botao:active:not(:disabled) {
+  transform: translateY(4px);
+  box-shadow: none;
+}
+
+.balao__botao:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
