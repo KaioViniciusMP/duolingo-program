@@ -3,6 +3,7 @@ import BarraProgresso from '../components/BarraProgresso.jsx'
 import Codigo from '../components/Codigo.jsx'
 import ConfirmarSaida from '../components/ConfirmarSaida.jsx'
 import FaixaFeedback from '../components/FaixaFeedback.jsx'
+import Incentivo from '../components/Incentivo.jsx'
 import { componentesPorTipo, TIPOS_AUTOCORRIGIDOS, TIPOS_COM_CODIGO_PROPRIO } from '../components/exercicios/index.js'
 import { corrigir, respostaParaMostrar } from '../engine/correcao.js'
 import { criarLicao, exercicioAtual, licaoTerminada, progresso, registrarResposta } from '../engine/fila.js'
@@ -20,6 +21,9 @@ export default function Licao({ licao, onSair, onConcluir }) {
   // Muda a cada exercício para remontar o componente (e reembaralhar as opções).
   const [rodada, setRodada] = useState(0)
   const [confirmandoSaida, setConfirmandoSaida] = useState(false)
+  const [mostrarIncentivo, setMostrarIncentivo] = useState(false)
+  // O incentivo aparece uma vez por sequência de erros, não a cada erro depois do segundo.
+  const incentivoNaSequencia = useRef(false)
   const inicio = useRef(Date.now())
 
   const exercicio = exerciciosPorId[feedback ? feedback.exercicioId : exercicioAtual(estado)]
@@ -36,6 +40,17 @@ export default function Licao({ licao, onSair, onConcluir }) {
   }
 
   function continuar() {
+    if (estado.errosSeguidos === 0) incentivoNaSequencia.current = false
+    if (!feedback.correto && estado.errosSeguidos >= 2 && !incentivoNaSequencia.current) {
+      incentivoNaSequencia.current = true
+      setMostrarIncentivo(true)
+      return
+    }
+    avancar()
+  }
+
+  function avancar() {
+    setMostrarIncentivo(false)
     if (licaoTerminada(estado)) {
       onConcluir({ estado, tempoMs: Date.now() - inicio.current })
       return
@@ -90,6 +105,7 @@ export default function Licao({ licao, onSair, onConcluir }) {
         )}
       </footer>
 
+      {mostrarIncentivo && <Incentivo onContinuar={avancar} />}
       {confirmandoSaida && <ConfirmarSaida onContinuar={() => setConfirmandoSaida(false)} onSair={onSair} />}
     </div>
   )
