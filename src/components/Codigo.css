@@ -1,0 +1,22 @@
+.codigo {
+  margin: 0;
+  padding: 14px 16px;
+  background: var(--codigo-fundo);
+  color: var(--codigo-texto);
+  border-radius: var(--raio);
+  font-family: var(--fonte-mono);
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.codigo .token.comment { color: #8b97a8; font-style: italic; }
+.codigo .token.string { color: #ffd43b; }
+.codigo .token.number { color: #f5a97f; }
+.codigo .token.keyword { color: #8fc1ff; font-weight: 600; }
+.codigo .token.builtin,
+.codigo .token.function { color: #7ee2b8; }
+.codigo .token.operator,
+.codigo .token.punctuation { color: #c7d0dc; }
+.codigo .token.boolean { color: #f5a97f; }

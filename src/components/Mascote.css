@@ -1,0 +1,55 @@
+.mascote {
+  display: block;
+  overflow: visible;
+}
+
+.mascote__corpo,
+.mascote__cabeca,
+.mascote__olhos {
+  transform-box: fill-box;
+}
+
+.mascote--animado .mascote__corpo {
+  transform-origin: 50% 100%;
+  animation: mascote-respirar 2.4s ease-in-out infinite;
+}
+
+.mascote--animado .mascote__cabeca {
+  transform-origin: 50% 100%;
+  animation: mascote-balancar 3s ease-in-out infinite;
+}
+
+.mascote--animado .mascote__olhos {
+  transform-origin: 50% 50%;
+  animation: mascote-piscar 4s infinite;
+}
+
+.mascote--animado .mascote__lingua {
+  animation: mascote-lingua 3s infinite;
+}
+
+@keyframes mascote-respirar {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.03); }
+}
+
+@keyframes mascote-balancar {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+
+@keyframes mascote-piscar {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+
+@keyframes mascote-lingua {
+  0%, 70%, 100% { opacity: 0; }
+  75%, 90% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mascote--animado * {
+    animation: none !important;
+  }
+}
