@@ -1,10 +1,10 @@
 import './Mascote.css'
 
 // Cobi, a cobrinha do PyLingo. Primeira versão; o acabamento vem na etapa 7.
-export default function Mascote({ tamanho = 96, animado = true, className = '' }) {
+export default function Mascote({ tamanho = 96, animado = true, comemorando = false, className = '' }) {
   return (
     <svg
-      className={`mascote ${animado ? 'mascote--animado' : ''} ${className}`}
+      className={`mascote ${animado ? 'mascote--animado' : ''} ${comemorando ? 'mascote--comemorando' : ''} ${className}`}
       width={tamanho}
       height={tamanho}
       viewBox="0 0 120 120"

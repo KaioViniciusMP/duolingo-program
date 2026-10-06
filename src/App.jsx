@@ -43,7 +43,7 @@ export default function App() {
     const novo = registrarParteConcluida(progresso, licao.id, totalDePartes, estado.errosPorExercicio)
     const licaoTerminou = novo.partesConcluidas[licao.id] === totalDePartes
     atualizarProgresso(novo)
-    setTela({ nome: 'concluida', estado, tempoMs, licaoTerminou })
+    setTela({ nome: 'concluida', estado, tempoMs, titulo: licaoTerminou ? 'Lição concluída!' : 'Parte concluída!' })
   }
 
   if (mostrarSplash) return <Splash onFim={fecharSplash} />
@@ -57,7 +57,7 @@ export default function App() {
       <LicaoConcluida
         estado={tela.estado}
         tempoMs={tela.tempoMs}
-        licaoTerminou={tela.licaoTerminou}
+        titulo={tela.titulo}
         onContinuar={() => setTela({ nome: 'trilha' })}
       />
     )

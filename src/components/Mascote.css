@@ -48,8 +48,21 @@
   75%, 90% { opacity: 1; }
 }
 
+/* Comemorando: pulinhos */
+.mascote--comemorando {
+  animation: mascote-pular 0.9s ease-in-out infinite;
+}
+
+@keyframes mascote-pular {
+  0%, 100% { transform: translateY(0) scale(1, 1); }
+  15% { transform: translateY(0) scale(1.06, 0.94); }
+  45% { transform: translateY(-14%) scale(0.97, 1.04); }
+  70% { transform: translateY(0) scale(1.04, 0.96); }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .mascote--animado * {
+  .mascote--animado *,
+  .mascote--comemorando {
     animation: none !important;
   }
 }
