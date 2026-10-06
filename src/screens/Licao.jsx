@@ -7,14 +7,16 @@ import Incentivo from '../components/Incentivo.jsx'
 import { componentesPorTipo, TIPOS_AUTOCORRIGIDOS, TIPOS_COM_CODIGO_PROPRIO } from '../components/exercicios/index.js'
 import { corrigir, respostaParaMostrar } from '../engine/correcao.js'
 import { criarLicao, exercicioAtual, licaoTerminada, progresso, registrarResposta } from '../engine/fila.js'
+import { testeTerminado } from '../engine/salto.js'
 import './Licao.css'
 
-export default function Licao({ licao, onSair, onConcluir }) {
+// teste: teste de salto (o erro não volta para a fila e o 4º erro encerra).
+export default function Licao({ licao, teste = false, onSair, onConcluir }) {
   const exerciciosPorId = useMemo(
     () => Object.fromEntries(licao.exercicios.map((e) => [e.id, e])),
     [licao],
   )
-  const [estado, setEstado] = useState(() => criarLicao(licao.exercicios))
+  const [estado, setEstado] = useState(() => criarLicao(licao.exercicios, { teste }))
   const [resposta, setResposta] = useState(null)
   // Enquanto a faixa aparece, o exercício mostrado é o que acabou de ser respondido.
   const [feedback, setFeedback] = useState(null)
@@ -41,7 +43,7 @@ export default function Licao({ licao, onSair, onConcluir }) {
 
   function continuar() {
     if (estado.errosSeguidos === 0) incentivoNaSequencia.current = false
-    if (!feedback.correto && estado.errosSeguidos >= 2 && !incentivoNaSequencia.current) {
+    if (!teste && !feedback.correto && estado.errosSeguidos >= 2 && !incentivoNaSequencia.current) {
       incentivoNaSequencia.current = true
       setMostrarIncentivo(true)
       return
@@ -51,7 +53,7 @@ export default function Licao({ licao, onSair, onConcluir }) {
 
   function avancar() {
     setMostrarIncentivo(false)
-    if (licaoTerminada(estado)) {
+    if (teste ? testeTerminado(estado) : licaoTerminada(estado)) {
       onConcluir({ estado, tempoMs: Date.now() - inicio.current })
       return
     }

@@ -3,7 +3,8 @@ import BarraNavegacao from './components/BarraNavegacao.jsx'
 import { curso } from './data/curso.js'
 import { dividirEmPartes, proximaParte } from './engine/partes.js'
 import { exerciciosParaPraticar, praticaLiberada, registrarPratica } from './engine/praticar.js'
-import { carregarProgresso, progressoInicial, registrarParteConcluida, salvarProgresso } from './engine/progresso.js'
+import { carregarProgresso, progressoInicial, registrarParteConcluida, salvarProgresso, somarErros } from './engine/progresso.js'
+import { exerciciosDoTeste, liberarAte, reprovouNoTeste } from './engine/salto.js'
 import { encontrarLicao, totalDeLicoes } from './engine/trilha.js'
 import BoasVindas from './screens/BoasVindas.jsx'
 import Guia from './screens/Guia.jsx'
@@ -45,7 +46,36 @@ export default function App() {
     setTela({ nome: 'licao', licao: { id: 'praticar-erros', exercicios }, pratica: true })
   }
 
+  function comecarTeste(unidadeId) {
+    const exercicios = exerciciosDoTeste(curso, unidadeId, progresso.licoesConcluidas)
+    // Unidades anteriores ainda sem conteúdo: não há o que testar, libera direto.
+    if (exercicios.length === 0) {
+      atualizarProgresso(liberarAte(curso, progresso, unidadeId))
+      return
+    }
+    setTela({ nome: 'licao', licao: { id: `teste-${unidadeId}`, exercicios }, teste: unidadeId })
+  }
+
   function concluirParte({ estado, tempoMs }) {
+    if (tela.teste) {
+      const comErros = somarErros(progresso, estado.errosPorExercicio)
+      const numero = curso.findIndex((u) => u.id === tela.teste) + 1
+      if (reprovouNoTeste(estado)) {
+        atualizarProgresso(comErros)
+        setTela({
+          nome: 'concluida',
+          estado,
+          tempoMs,
+          titulo: 'Quase!',
+          subtitulo: 'Você errou mais de 3. Siga pelas lições ou tente o teste de novo.',
+          comemorando: false,
+        })
+      } else {
+        atualizarProgresso(liberarAte(curso, comErros, tela.teste))
+        setTela({ nome: 'concluida', estado, tempoMs, titulo: `Unidade ${numero} liberada!` })
+      }
+      return
+    }
     if (tela.pratica) {
       atualizarProgresso(registrarPratica(progresso, estado))
       setTela({ nome: 'concluida', estado, tempoMs, titulo: 'Treino concluído!' })
@@ -70,7 +100,14 @@ export default function App() {
   }
 
   if (tela.nome === 'licao') {
-    return <Licao licao={tela.licao} onSair={() => setTela({ nome: 'trilha' })} onConcluir={concluirParte} />
+    return (
+      <Licao
+        licao={tela.licao}
+        teste={Boolean(tela.teste)}
+        onSair={() => setTela({ nome: 'trilha' })}
+        onConcluir={concluirParte}
+      />
+    )
   }
 
   if (tela.nome === 'concluida') {
@@ -79,6 +116,8 @@ export default function App() {
         estado={tela.estado}
         tempoMs={tela.tempoMs}
         titulo={tela.titulo}
+        subtitulo={tela.subtitulo}
+        comemorando={tela.comemorando}
         onContinuar={() => setTela({ nome: 'trilha' })}
       />
     )
@@ -103,6 +142,7 @@ export default function App() {
           progresso={progresso}
           pratica={estadoDaPratica()}
           onPraticar={comecarPratica}
+          onPular={comecarTeste}
           onComecarLicao={comecarLicao}
           onAbrirGuia={(unidadeId) => setTela({ nome: 'guia', unidadeId })}
         />

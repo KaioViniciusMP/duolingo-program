@@ -101,7 +101,8 @@
 }
 
 /* Espaço para a etiqueta "Começar" e o anel não cobrirem a lição de cima */
-.no--atual {
+.no--atual,
+.no--pular {
   padding-top: 64px;
   padding-bottom: 20px;
 }

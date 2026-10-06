@@ -29,11 +29,13 @@ export function ordenarExercicios(exercicios) {
     .map(({ exercicio }) => exercicio)
 }
 
-export function criarLicao(exercicios) {
+// teste: no teste de salto, o exercício errado não volta para a fila.
+export function criarLicao(exercicios, { teste = false } = {}) {
   const ordenados = ordenarExercicios(exercicios)
   return {
     fila: ordenados.map((e) => e.id),
     total: ordenados.length,
+    teste,
     acertos: 0,
     tentativas: 0,
     errosSeguidos: 0,
@@ -62,7 +64,7 @@ export function registrarResposta(estado, resultado) {
 
   return {
     ...estado,
-    fila: resultado.correto ? resto : [...resto, id],
+    fila: resultado.correto || estado.teste ? resto : [...resto, id],
     acertos: resultado.correto ? estado.acertos + 1 : estado.acertos,
     tentativas: estado.tentativas + 1,
     errosSeguidos: errou ? estado.errosSeguidos + 1 : 0,
@@ -80,9 +82,15 @@ export function licaoTerminada(estado) {
   return estado.fila.length === 0
 }
 
-// Fração de 0 a 1. Só avança com acertos.
+// Fração de 0 a 1. Só avança com acertos; no teste, avança a cada resposta.
 export function progresso(estado) {
-  return estado.total === 0 ? 1 : estado.acertos / estado.total
+  if (estado.total === 0) return 1
+  return estado.teste ? (estado.total - estado.fila.length) / estado.total : estado.acertos / estado.total
+}
+
+// Quantos exercícios tiveram algum erro.
+export function exerciciosErrados(estado) {
+  return Object.keys(estado.errosPorExercicio).length
 }
 
 // Percentual (0 a 100) de exercícios acertados na primeira tentativa.

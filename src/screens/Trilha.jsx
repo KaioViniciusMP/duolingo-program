@@ -1,16 +1,24 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { IconeCadeado, IconeCheck, IconeEstrela, IconeLivro, IconeTrofeu } from '../components/Icones.jsx'
+import { IconeCadeado, IconeCheck, IconeEstrela, IconeLivro, IconePular, IconeTrofeu } from '../components/Icones.jsx'
 import Mascote from '../components/Mascote.jsx'
 import { quantidadeDePartes } from '../engine/partes.js'
-import { estadosDasLicoes } from '../engine/trilha.js'
+import { ERROS_PERMITIDOS, EXERCICIOS_NO_TESTE } from '../engine/salto.js'
+import { estadosDasLicoes, unidadesAbertas } from '../engine/trilha.js'
 import './Trilha.css'
 
 // Deslocamento horizontal (px) de cada círculo, formando o zigue-zague.
 const ZIGUE_ZAGUE = [0, 44, 70, 44, 0, -44, -70, -44]
 
 // pratica: 'bloqueada' (antes de terminar a unidade 1), 'vazia' (sem erros) ou 'disponivel'.
-export default function Trilha({ curso, progresso, pratica, onComecarLicao, onAbrirGuia, onPraticar }) {
-  const estados = useMemo(() => estadosDasLicoes(curso, progresso.licoesConcluidas), [curso, progresso])
+export default function Trilha({ curso, progresso, pratica, onComecarLicao, onAbrirGuia, onPraticar, onPular }) {
+  const estados = useMemo(
+    () => estadosDasLicoes(curso, progresso.licoesConcluidas, progresso.unidadesLiberadas),
+    [curso, progresso],
+  )
+  const abertas = useMemo(
+    () => unidadesAbertas(curso, progresso.licoesConcluidas, progresso.unidadesLiberadas),
+    [curso, progresso],
+  )
   const [selecionada, setSelecionada] = useState(null)
   const atualRef = useRef(null)
 
@@ -54,13 +62,17 @@ export default function Trilha({ curso, progresso, pratica, onComecarLicao, onAb
                 licao={licao}
                 numero={indice + 1}
                 totalNaUnidade={unidade.licoes.length}
+                numeroDaUnidade={indiceUnidade + 1}
                 estado={estados[licao.id]}
+                // A primeira lição de cada unidade fechada vira o "Pular pra cá?"
+                podePular={indice === 0 && !abertas.has(unidade.id)}
                 deslocamento={ZIGUE_ZAGUE[indice % ZIGUE_ZAGUE.length]}
                 partesFeitas={progresso.partesConcluidas[licao.id] ?? 0}
                 selecionada={selecionada === licao.id}
                 refAtual={estados[licao.id] === 'atual' ? atualRef : null}
                 onTocar={() => setSelecionada(selecionada === licao.id ? null : licao.id)}
                 onComecar={() => onComecarLicao(licao.id)}
+                onPular={() => onPular(unidade.id)}
               />
             ))}
           </ol>
@@ -83,15 +95,42 @@ export default function Trilha({ curso, progresso, pratica, onComecarLicao, onAb
   )
 }
 
-function NoLicao({ licao, numero, totalNaUnidade, estado, deslocamento, partesFeitas, selecionada, refAtual, onTocar, onComecar }) {
+function NoLicao({
+  licao,
+  numero,
+  totalNaUnidade,
+  numeroDaUnidade,
+  estado,
+  podePular,
+  deslocamento,
+  partesFeitas,
+  selecionada,
+  refAtual,
+  onTocar,
+  onComecar,
+  onPular,
+}) {
+  if (podePular) {
+    return (
+      <NoPular
+        numeroDaUnidade={numeroDaUnidade}
+        deslocamento={deslocamento}
+        selecionada={selecionada}
+        onTocar={onTocar}
+        onPular={onPular}
+      />
+    )
+  }
+
   const temConteudo = licao.exercicios.length > 0
+  const liberada = estado === 'atual' || estado === 'pendente'
   const Icone = estado === 'bloqueada' ? IconeCadeado : estado === 'concluida' ? IconeCheck : licao.revisao ? IconeTrofeu : IconeEstrela
   const totalDePartes = quantidadeDePartes(licao.exercicios.length)
   const nomeDaLicao = licao.revisao ? 'Revisão da unidade' : `Lição ${numero} de ${totalNaUnidade}`
 
   let detalhe = nomeDaLicao
   if (estado === 'bloqueada') detalhe = 'Complete as lições anteriores para liberar esta.'
-  else if (estado === 'atual' && temConteudo && totalDePartes > 1)
+  else if (liberada && temConteudo && totalDePartes > 1)
     detalhe = `${nomeDaLicao} · Parte ${partesFeitas + 1} de ${totalDePartes}`
 
   return (
@@ -131,6 +170,40 @@ function NoLicao({ licao, numero, totalNaUnidade, estado, deslocamento, partesFe
                 Em breve
               </button>
             ))}
+        </div>
+      )}
+    </li>
+  )
+}
+
+// Primeiro círculo de uma unidade fechada: abre o teste de salto.
+function NoPular({ numeroDaUnidade, deslocamento, selecionada, onTocar, onPular }) {
+  return (
+    <li className="no no--pular" style={{ '--deslocamento': `${deslocamento}px` }}>
+      <div className="no__posicao">
+        {!selecionada && <span className="no__etiqueta">Pular pra cá?</span>}
+        <button
+          className="no__circulo"
+          aria-label={`Pular para a unidade ${numeroDaUnidade}`}
+          onClick={(e) => {
+            e.stopPropagation()
+            onTocar()
+          }}
+        >
+          <IconePular tamanho={34} />
+        </button>
+      </div>
+
+      {selecionada && (
+        <div className="balao" onClick={(e) => e.stopPropagation()}>
+          <h3 className="balao__titulo">Pular para a Unidade {numeroDaUnidade}?</h3>
+          <p className="balao__detalhe">
+            Faça um teste com até {EXERCICIOS_NO_TESTE} exercícios das unidades anteriores. Errando no máximo{' '}
+            {ERROS_PERMITIDOS}, esta unidade é liberada e as lições puladas ficam pendentes.
+          </p>
+          <button className="balao__botao" onClick={onPular}>
+            Fazer o teste
+          </button>
         </div>
       )}
     </li>

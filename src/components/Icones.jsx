@@ -78,3 +78,11 @@ export function IconeVoltar(props) {
     </Icone>
   )
 }
+
+export function IconePular(props) {
+  return (
+    <Icone {...props}>
+      <path d="M3.5 6.2v11.6c0 .8.9 1.3 1.6.8L13 13v4.8c0 .8.9 1.3 1.6.8l7.6-5.8c.5-.4.5-1.2 0-1.6l-7.6-5.8c-.7-.5-1.6 0-1.6.8V11L5.1 5.4c-.7-.5-1.6 0-1.6.8z" />
+    </Icone>
+  )
+}

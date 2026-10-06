@@ -12,6 +12,8 @@ export function progressoInicial() {
     errosPorExercicio: {},
     // id da lição -> total de partes concluídas (conta também ao refazer)
     partesConcluidas: {},
+    // unidades liberadas pelo teste de salto ("Pular pra cá?")
+    unidadesLiberadas: [],
     // false até o aluno passar pela tela de boas-vindas
     boasVindasVista: false,
   }
@@ -43,13 +45,18 @@ export function salvarProgresso(progresso, armazenamento = armazenamentoPadrao()
   }
 }
 
-// errosDaParte: id do exercício -> quantas vezes foi errado na parte.
-// A lição entra em licoesConcluidas quando todas as partes foram feitas.
-export function registrarParteConcluida(progresso, licaoId, totalDePartes, errosDaParte) {
+// erros: id do exercício -> quantas vezes foi errado. Alimenta "Praticar erros".
+export function somarErros(progresso, erros) {
   const errosPorExercicio = { ...progresso.errosPorExercicio }
-  for (const [id, quantidade] of Object.entries(errosDaParte)) {
+  for (const [id, quantidade] of Object.entries(erros)) {
     errosPorExercicio[id] = (errosPorExercicio[id] ?? 0) + quantidade
   }
+  return { ...progresso, errosPorExercicio }
+}
+
+// A lição entra em licoesConcluidas quando todas as partes foram feitas.
+export function registrarParteConcluida(progresso, licaoId, totalDePartes, errosDaParte) {
+  const { errosPorExercicio } = somarErros(progresso, errosDaParte)
   const partesFeitas = (progresso.partesConcluidas[licaoId] ?? 0) + 1
   const concluiu = partesFeitas >= totalDePartes
   return {

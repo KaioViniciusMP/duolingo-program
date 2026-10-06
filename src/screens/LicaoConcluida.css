@@ -21,6 +21,13 @@
   color: var(--azul);
 }
 
+.concluida__subtitulo {
+  margin: -16px 0 0;
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--cinza);
+}
+
 .concluida__cartoes {
   margin-bottom: auto;
   display: grid;
